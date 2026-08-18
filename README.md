@@ -110,7 +110,7 @@ Both upstream packages are **vendored** in this repo (no surprise `pip install` 
 
 # Changelog 🧰
 
-- 2026-08-12: version 0.1.0 — initial release (Cursor + Claude, four-row overview, 60s cache)
+- 2026-08-18: version 0.1.0 — initial release (Cursor + Claude, four-row overview, 60s cache)
 
 # Feedback 🧐
 
