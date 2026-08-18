@@ -11,6 +11,8 @@ See your **Cursor** and **Claude** usage toward plan limits — right from [Alfr
 src="https://img.shields.io/github/downloads/giovannicoppola/alfred-aeye/total?color=purple&label=Downloads"><br/>
 </a>
 
+[Screenshot](docs/screenshot.png)
+
 # Motivation ✅
 
 - Quickly check how much of your AI quotas you’ve used without opening dashboards
