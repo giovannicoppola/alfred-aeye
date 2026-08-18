@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.giovanni.alfred-aeye</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>445C99BD-DDF7-435F-B9C6-DA6ADF00BF61</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>81C71EDA-2717-4EB0-B297-A35A4DD0520B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DBA900D3-74DB-4C47-8980-10D5B681EF21</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Open dashboard</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>717200C1-F2D9-41F5-8460-26593FBC1B01</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>445C99BD-DDF7-435F-B9C6-DA6ADF00BF61</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>giovanni</string>
+	<key>description</key>
+	<string>Show current Cursor and Claude usage toward plan limits</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Aeye</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>81C71EDA-2717-4EB0-B297-A35A4DD0520B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>{var:mainkeyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Fetching Cursor &amp; Claude usage…</string>
+				<key>script</key>
+				<string>./run.sh
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Cursor + Claude usage toward limits</string>
+				<key>title</key>
+				<string>Aeye</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>445C99BD-DDF7-435F-B9C6-DA6ADF00BF61</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>717200C1-F2D9-41F5-8460-26593FBC1B01</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>DBA900D3-74DB-4C47-8980-10D5B681EF21</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string># Aeye 🦉
+
+Show **Cursor** and **Claude** usage toward plan limits from Alfred.
+
+More info: https://github.com/giovannicoppola/alfred-aeye
+
+## Setup
+- For Cursor rows: signed in to the Cursor app on this Mac
+- For Claude rows: Claude Code signed in (OAuth in Keychain)
+- Optional: change the keyword below (default: `!e`), or assign a hotkey
+- Optional: uncheck rows you don’t use (Composer/Auto, Other models, Hourly, Weekly)
+
+## Usage
+1. Type the keyword → enabled rows (Composer/Auto, Other models, Hourly, Weekly)
+2. Results are cached for ~60s
+
+### Reading the rows
+- Circle meter: 🟢 → 🟡 → 🔴 as you approach the limit (⚪ unused)
+- **Composer / Auto** / **Other models** — same split as the Cursor spending page
+- Cursor `$x / $y` = included compute spend vs plan included limit (not necessarily billed $)
+- `(🕐 68%, 11d, Tue Aug 21)` = % of period elapsed, then time until reset (`d` / `h` / `m`)
+- Pace emoji after the parenthesis: 🐢 underspending · 🎯 on track · 🔥 overspending (spent % vs elapsed %)
+- `(🕐 40%, 5h, 11:30pm)` on Hourly when a session is active
+- **Hourly** — Claude 5-hour session limit (Claude Code icon)
+- **Weekly** — Claude weekly limit
+- Claude `experimental` = % from Anthropic’s OAuth usage API (not official statusline)
+
+## Actions
+- ⏎: copy the selected row
+- ⌘⏎: open the service dashboard</string>
+	<key>uidata</key>
+	<dict>
+		<key>445C99BD-DDF7-435F-B9C6-DA6ADF00BF61</key>
+		<dict>
+			<key>xpos</key>
+			<real>435</real>
+			<key>ypos</key>
+			<real>245</real>
+		</dict>
+		<key>717200C1-F2D9-41F5-8460-26593FBC1B01</key>
+		<dict>
+			<key>xpos</key>
+			<real>220</real>
+			<key>ypos</key>
+			<real>245</real>
+		</dict>
+		<key>81C71EDA-2717-4EB0-B297-A35A4DD0520B</key>
+		<dict>
+			<key>xpos</key>
+			<real>675</real>
+			<key>ypos</key>
+			<real>205</real>
+		</dict>
+		<key>DBA900D3-74DB-4C47-8980-10D5B681EF21</key>
+		<dict>
+			<key>xpos</key>
+			<real>675</real>
+			<key>ypos</key>
+			<real>325</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>!e</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>mainkeyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Composer / Auto (Cursor)</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Show rows</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>show_cursor_auto</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Other models (Cursor)</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>show_cursor_other</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Hourly (Claude)</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>show_claude_hourly</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Weekly (Claude)</string>
+			</dict>
+			<key>description</key>
+			<string>Uncheck rows you don’t use. All on by default.</string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>show_claude_weekly</string>
+		</dict>
+	</array>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>0.1.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/giovannicoppola/alfred-aeye</string>
+</dict>
+</plist>
