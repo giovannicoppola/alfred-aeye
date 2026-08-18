@@ -1,6 +1,5 @@
 # Aeye 🦉
-
-See your **Cursor** and **Claude** usage toward plan limits — right from [Alfred](https://www.alfredapp.com/).
+Keep an 👁️ on your **Cursor** and **Claude** usage — right from [Alfred](https://www.alfredapp.com/).
 
 <div align="center">
   <img src="src/icon.png" width="128" alt="Aeye icon">
