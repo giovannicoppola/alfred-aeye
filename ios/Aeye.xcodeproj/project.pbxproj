@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		322D36880DAE45AEBAF09CDE /* AeyeRowID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD145A49A252400AA53BBEAC /* AeyeRowID.swift */; };
+		259C6F8D1EFE45A68E42AC54 /* AeyeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB67BD2D5C460FA193A48A /* AeyeModels.swift */; };
+		A1C857EF5D704106A02ED04D /* AeyeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6013BDB79604E9A8C02B583 /* AeyeFormatting.swift */; };
+		3618AD768E7847129B40F168 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31380AD4C3774807B294B8F2 /* KeychainStore.swift */; };
+		B36A6A5D11C64FB48477F57E /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1287D27D1CF47B2B93487B2 /* SnapshotStore.swift */; };
+		C2E7DAA201AB42D39F48C153 /* CursorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C811E6E0DDD34F3496D4E5D3 /* CursorClient.swift */; };
+		2FEF72A42A2945D3A7E869BB /* ClaudeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74373C1F081246CB8F5D7CE7 /* ClaudeClient.swift */; };
+		280F5A723ECC4AA6847E1BE4 /* AeyeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B0C7EFED5451FA00B115D /* AeyeService.swift */; };
+		6800DFEEBFBD4139B059F1F4 /* MockSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D68033E8E4340BB83AE10 /* MockSnapshot.swift */; };
+		2971DB09BFEF4AC2B6D5105C /* AeyeWidgetKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C43BF0DCD441418C9008BA /* AeyeWidgetKind.swift */; };
+		1CFF7F33B1974E40BFA0C64E /* AeyeRowID.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD145A49A252400AA53BBEAC /* AeyeRowID.swift */; };
+		C8A6750B2E114D568FEF702A /* AeyeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB67BD2D5C460FA193A48A /* AeyeModels.swift */; };
+		79A4F21177E449C1B0D29549 /* AeyeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6013BDB79604E9A8C02B583 /* AeyeFormatting.swift */; };
+		26A5EC8130B74FAB9470A612 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31380AD4C3774807B294B8F2 /* KeychainStore.swift */; };
+		770F9D68E9F643FD82131447 /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1287D27D1CF47B2B93487B2 /* SnapshotStore.swift */; };
+		94BF85B9B8834843ACFCD228 /* CursorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C811E6E0DDD34F3496D4E5D3 /* CursorClient.swift */; };
+		87331A2CE8C84844A45F1773 /* ClaudeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74373C1F081246CB8F5D7CE7 /* ClaudeClient.swift */; };
+		EB5D193251BD4F26A5676C1F /* AeyeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128B0C7EFED5451FA00B115D /* AeyeService.swift */; };
+		20BE7FB2852B492DB6CFEE6C /* MockSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D68033E8E4340BB83AE10 /* MockSnapshot.swift */; };
+		88EF34D9B7E441C08D843896 /* AeyeWidgetKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C43BF0DCD441418C9008BA /* AeyeWidgetKind.swift */; };
+		082EC1D616E04A28903967D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0C745D2AC88448481C8F073 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB6026F76B7E45E89F6B8A05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1DB01DF215B40B1A0A2F063 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E78D7BFB1813487F941E3167;
+			remoteInfo = AeyeWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B31FB99EB65C4ACA9DE55094 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5662433F21A24FAD8C66CA4A /* AeyeWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7D331936D84342B7B1B7723D /* Aeye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aeye.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5740DE4D745C4450B8EC4B38 /* AeyeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AeyeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EEA45DEF2C949229F53F49E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		962CA563655F43A5BE4178FA /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		CD145A49A252400AA53BBEAC /* AeyeRowID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeRowID.swift; sourceTree = "<group>"; };
+		7CFB67BD2D5C460FA193A48A /* AeyeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeModels.swift; sourceTree = "<group>"; };
+		B6013BDB79604E9A8C02B583 /* AeyeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeFormatting.swift; sourceTree = "<group>"; };
+		31380AD4C3774807B294B8F2 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		D1287D27D1CF47B2B93487B2 /* SnapshotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotStore.swift; sourceTree = "<group>"; };
+		C811E6E0DDD34F3496D4E5D3 /* CursorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorClient.swift; sourceTree = "<group>"; };
+		74373C1F081246CB8F5D7CE7 /* ClaudeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeClient.swift; sourceTree = "<group>"; };
+		128B0C7EFED5451FA00B115D /* AeyeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeService.swift; sourceTree = "<group>"; };
+		023D68033E8E4340BB83AE10 /* MockSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSnapshot.swift; sourceTree = "<group>"; };
+		61C43BF0DCD441418C9008BA /* AeyeWidgetKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeWidgetKind.swift; sourceTree = "<group>"; };
+		A0C745D2AC88448481C8F073 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E0C47A058B2749989BDACC6B /* Exceptions for "Aeye" folder in "Aeye" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BFABB65A0D974455AA69AF69 /* Aeye */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1135692CB9AC43EDB7CFBAE9 /* Aeye */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				758B3B126B0F413CA7B37FD1 /* Exceptions for "Aeye" folder in "Aeye" target */,
+			);
+			path = Aeye;
+			sourceTree = "<group>";
+		};
+		33A702BF452D40DDAF5CC596 /* AeyeWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AeyeWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		31356B4EE2D141DB8E6E93BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EA4C788B4114FA0824A2857 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				323AD66358164D0AADA68848 /* SwiftUI.framework in Frameworks */,
+				E6CF3D02A8C64596BFEAFC7D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B18227A9A22748D58CDA9139 = {
+			isa = PBXGroup;
+			children = (
+				1135692CB9AC43EDB7CFBAE9 /* Aeye */,
+				33A702BF452D40DDAF5CC596 /* AeyeWidget */,
+				AD6AD742DF2F44BCB5325796 /* Shared */,
+				ECD2ABF0DA5E4254A0AAA451 /* Config */,
+				A0C745D2AC88448481C8F073 /* Assets.xcassets */,
+				CED66D2857F04E6AB58BB33D /* Frameworks */,
+				A0CB01CA74FE428697B18695 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A0CB01CA74FE428697B18695 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7D331936D84342B7B1B7723D /* Aeye.app */,
+				5740DE4D745C4450B8EC4B38 /* AeyeWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CED66D2857F04E6AB58BB33D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7EEA45DEF2C949229F53F49E /* WidgetKit.framework */,
+				962CA563655F43A5BE4178FA /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD6AD742DF2F44BCB5325796 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CD145A49A252400AA53BBEAC /* AeyeRowID.swift */,
+				7CFB67BD2D5C460FA193A48A /* AeyeModels.swift */,
+				B6013BDB79604E9A8C02B583 /* AeyeFormatting.swift */,
+				31380AD4C3774807B294B8F2 /* KeychainStore.swift */,
+				D1287D27D1CF47B2B93487B2 /* SnapshotStore.swift */,
+				C811E6E0DDD34F3496D4E5D3 /* CursorClient.swift */,
+				74373C1F081246CB8F5D7CE7 /* ClaudeClient.swift */,
+				128B0C7EFED5451FA00B115D /* AeyeService.swift */,
+				023D68033E8E4340BB83AE10 /* MockSnapshot.swift */,
+				61C43BF0DCD441418C9008BA /* AeyeWidgetKind.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		ECD2ABF0DA5E4254A0AAA451 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BFABB65A0D974455AA69AF69 /* Aeye */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5034913BC2974B3CB3A707C6 /* Build configuration list for PBXNativeTarget "Aeye" */;
+			buildPhases = (
+				4035CFAFF0AC41518B630F2A /* Sources */,
+				31356B4EE2D141DB8E6E93BE /* Frameworks */,
+				BCAE8DE3EEF64B679E53D60D /* Resources */,
+				B31FB99EB65C4ACA9DE55094 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F622153E5920455ABB18F919 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				1135692CB9AC43EDB7CFBAE9 /* Aeye */,
+			);
+			name = Aeye;
+			productName = Aeye;
+			productReference = 7D331936D84342B7B1B7723D /* Aeye.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E78D7BFB1813487F941E3167 /* AeyeWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1FE1AE7BEED4E2F809E8637 /* Build configuration list for PBXNativeTarget "AeyeWidgetExtension" */;
+			buildPhases = (
+				0A46B84663C9430792E93837 /* Sources */,
+				4EA4C788B4114FA0824A2857 /* Frameworks */,
+				858CF32670D34AFC8FE398FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				33A702BF452D40DDAF5CC596 /* AeyeWidget */,
+			);
+			name = AeyeWidgetExtension;
+			productName = AeyeWidgetExtension;
+			productReference = 5740DE4D745C4450B8EC4B38 /* AeyeWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1DB01DF215B40B1A0A2F063 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = F7BC42F5CDA1433A9D10BA36 /* Build configuration list for PBXProject "Aeye" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B18227A9A22748D58CDA9139;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A0CB01CA74FE428697B18695 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BFABB65A0D974455AA69AF69 /* Aeye */,
+				E78D7BFB1813487F941E3167 /* AeyeWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCAE8DE3EEF64B679E53D60D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				082EC1D616E04A28903967D3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		858CF32670D34AFC8FE398FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4035CFAFF0AC41518B630F2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				322D36880DAE45AEBAF09CDE /* AeyeRowID.swift in Sources */,
+				259C6F8D1EFE45A68E42AC54 /* AeyeModels.swift in Sources */,
+				A1C857EF5D704106A02ED04D /* AeyeFormatting.swift in Sources */,
+				3618AD768E7847129B40F168 /* KeychainStore.swift in Sources */,
+				B36A6A5D11C64FB48477F57E /* SnapshotStore.swift in Sources */,
+				C2E7DAA201AB42D39F48C153 /* CursorClient.swift in Sources */,
+				2FEF72A42A2945D3A7E869BB /* ClaudeClient.swift in Sources */,
+				280F5A723ECC4AA6847E1BE4 /* AeyeService.swift in Sources */,
+				6800DFEEBFBD4139B059F1F4 /* MockSnapshot.swift in Sources */,
+				2971DB09BFEF4AC2B6D5105C /* AeyeWidgetKind.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A46B84663C9430792E93837 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CFF7F33B1974E40BFA0C64E /* AeyeRowID.swift in Sources */,
+				C8A6750B2E114D568FEF702A /* AeyeModels.swift in Sources */,
+				79A4F21177E449C1B0D29549 /* AeyeFormatting.swift in Sources */,
+				26A5EC8130B74FAB9470A612 /* KeychainStore.swift in Sources */,
+				770F9D68E9F643FD82131447 /* SnapshotStore.swift in Sources */,
+				94BF85B9B8834843ACFCD228 /* CursorClient.swift in Sources */,
+				87331A2CE8C84844A45F1773 /* ClaudeClient.swift in Sources */,
+				EB5D193251BD4F26A5676C1F /* AeyeService.swift in Sources */,
+				20BE7FB2852B492DB6CFEE6C /* MockSnapshot.swift in Sources */,
+				88EF34D9B7E441C08D843896 /* AeyeWidgetKind.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F622153E5920455ABB18F919 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E78D7BFB1813487F941E3167 /* AeyeWidgetExtension */;
+			targetProxy = BB6026F76B7E45E89F6B8A05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1C5ABFD570E641938712C1EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FFE7B6A90CF14553A0CABB86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F32C4310BBFF4AA69D63DCC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/Aeye.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Aeye/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Aeye;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		710468D827CF40FDB201F925 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/Aeye.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Aeye/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Aeye;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		6C0F06DBD3FE436EB035BDA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/AeyeWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Config/AeyeWidget-Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Aeye Widget";
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@executable_path/../../Frameworks");
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CE7F44F5E17B4D10866B4404 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/AeyeWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Config/AeyeWidget-Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Aeye Widget";
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@executable_path/../../Frameworks");
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F7BC42F5CDA1433A9D10BA36 /* Build configuration list for PBXProject "Aeye" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C5ABFD570E641938712C1EF /* Debug */,
+				FFE7B6A90CF14553A0CABB86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5034913BC2974B3CB3A707C6 /* Build configuration list for PBXNativeTarget "Aeye" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F32C4310BBFF4AA69D63DCC4 /* Debug */,
+				710468D827CF40FDB201F925 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1FE1AE7BEED4E2F809E8637 /* Build configuration list for PBXNativeTarget "AeyeWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C0F06DBD3FE436EB035BDA8 /* Debug */,
+				CE7F44F5E17B4D10866B4404 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1DB01DF215B40B1A0A2F063 /* Project object */;
+}
