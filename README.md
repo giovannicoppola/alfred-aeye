@@ -1,6 +1,5 @@
 # Aeye 🦉
-
-See your **Cursor**, **Claude**, and **Grok Bot** usage toward plan limits — right from [Alfred](https://www.alfredapp.com/).
+Keep an 👁️ on your **Cursor**, **Claude**, and **Grok Bot** usage — right from [Alfred](https://www.alfredapp.com/).
 
 <div align="center">
   <img src="src/icon.png" width="128" alt="Aeye icon">
@@ -11,7 +10,7 @@ See your **Cursor**, **Claude**, and **Grok Bot** usage toward plan limits — r
 src="https://img.shields.io/github/downloads/giovannicoppola/alfred-aeye/total?color=purple&label=Downloads"><br/>
 </a>
 
-[Screenshot](docs/screenshot.png)
+![Screenshot](docs/screenshot.png)
 
 **On iPhone too** — [Aeye for iOS](ios/README.md) is a free companion app with the same rows, plus
 Home Screen widgets and an Apple Watch app.
@@ -120,7 +119,7 @@ Both upstream packages are **vendored** in this repo (no surprise `pip install` 
 # Changelog 🧰
 
 - 2026-09-12: version 0.2.0 — Grok Bot weekly included-usage row (Cursor session)
-- 2026-08-12: version 0.1.0 — initial release (Cursor + Claude, four-row overview, 60s cache)
+- 2026-08-18: version 0.1.0 — initial release (Cursor + Claude, four-row overview, 60s cache)
 
 # Feedback 🧐
 
