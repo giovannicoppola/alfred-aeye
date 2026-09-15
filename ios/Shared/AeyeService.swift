@@ -1,9 +1,11 @@
 import Foundation
 
-/// Builds the four-row overview — logic ported from ``src/aieye.py``.
+/// Builds the overview — logic ported from ``src/aieye.py``.
 public actor AeyeService {
     private var cachedSnapshot: AeyeSnapshot?
     private var cacheTimestamp: Date?
+    private var isFetching = false
+    private var inFlightWaiters: [CheckedContinuation<AeyeSnapshot, Never>] = []
     private let credentials: CredentialsStore
 
     public init(credentials: CredentialsStore = CredentialsStore()) {
@@ -23,14 +25,29 @@ public actor AeyeService {
             return cached
         }
 
-        var rows: [OverviewRow] = []
+        if isFetching {
+            let snapshot = await withCheckedContinuation { continuation in
+                inFlightWaiters.append(continuation)
+            }
+            if !forceRefresh { return snapshot }
+        }
 
-        if visibility.cursorAuto || visibility.cursorOther {
-            rows.append(contentsOf: await cursorRows(visibility: visibility))
+        isFetching = true
+        let snapshot = await buildSnapshot(visibility: visibility)
+        let waiters = inFlightWaiters
+        inFlightWaiters = []
+        isFetching = false
+        for waiter in waiters {
+            waiter.resume(returning: snapshot)
         }
-        if visibility.claudeHourly || visibility.claudeWeekly {
-            rows.append(contentsOf: await claudeRows(visibility: visibility))
-        }
+        return snapshot
+    }
+
+    private func buildSnapshot(visibility: RowVisibility) async -> AeyeSnapshot {
+        async let cursor = cursorRowsIfNeeded(visibility: visibility)
+        async let claude = claudeRowsIfNeeded(visibility: visibility)
+        var rows = await cursor
+        rows.append(contentsOf: await claude)
 
         if rows.isEmpty {
             rows = [
@@ -60,20 +77,45 @@ public actor AeyeService {
 
     // MARK: - Cursor rows
 
+    private func cursorRowsIfNeeded(visibility: RowVisibility) async -> [OverviewRow] {
+        guard visibility.cursorAuto || visibility.cursorOther || visibility.cursorGrokBot else {
+            return []
+        }
+        return await cursorRows(visibility: visibility)
+    }
+
+    private func claudeRowsIfNeeded(visibility: RowVisibility) async -> [OverviewRow] {
+        guard visibility.claudeHourly || visibility.claudeWeekly else { return [] }
+        return await claudeRows(visibility: visibility)
+    }
+
     private func cursorRows(visibility: RowVisibility) async -> [OverviewRow] {
         guard credentials.hasCursor, let raw = credentials.cursorSessionToken else {
             return cursorError("Cursor session token not set")
         }
 
-        do {
-            let client = CursorClient(cookieValue: CursorClient.normalizeCookieValue(raw))
-            let data = try await client.fetchUsage()
-            return buildCursorRows(from: data, visibility: visibility)
-        } catch let error as CursorAPIError {
-            return cursorError(error.localizedDescription)
-        } catch {
-            return cursorError(error.localizedDescription)
+        let client = CursorClient(cookieValue: CursorClient.normalizeCookieValue(raw))
+        var rows: [OverviewRow] = []
+
+        if visibility.cursorAuto || visibility.cursorOther {
+            do {
+                let data = try await client.fetchUsage()
+                rows.append(contentsOf: buildCursorRows(from: data, visibility: visibility))
+            } catch {
+                rows.append(contentsOf: cursorError(error.localizedDescription))
+            }
         }
+
+        if visibility.cursorGrokBot {
+            do {
+                if let grok = try await client.fetchGrokBotUsage() {
+                    rows.append(buildGrokBotRow(from: grok))
+                }
+            } catch {
+                rows.append(grokBotError(error.localizedDescription))
+            }
+        }
+        return rows
     }
 
     private func buildCursorRows(from data: CursorUsageData, visibility: RowVisibility) -> [OverviewRow] {
@@ -115,7 +157,8 @@ public actor AeyeService {
                 ),
                 subtitle: autoSub,
                 copyText: "Cursor Composer/Auto: \(AeyeFormatting.percentString(data.autoPercentUsed))\(autoSuffix)",
-                dashboardURL: AeyeURLs.cursorDashboard
+                dashboardURL: AeyeURLs.cursorDashboard,
+                suffix: autoSuffix
             ))
         }
         if visibility.cursorOther {
@@ -130,10 +173,40 @@ public actor AeyeService {
                 ),
                 subtitle: otherSub,
                 copyText: "Cursor other models: \(AeyeFormatting.percentString(data.apiPercentUsed))\(otherSuffix)",
-                dashboardURL: AeyeURLs.cursorDashboard
+                dashboardURL: AeyeURLs.cursorDashboard,
+                suffix: otherSuffix
             ))
         }
         return rows
+    }
+
+    private func buildGrokBotRow(from data: GrokBotUsage) -> OverviewRow {
+        let suffix = AeyeFormatting.periodSuffix(
+            end: data.periodEnd,
+            start: data.periodStart,
+            spentPercent: data.usagePercent,
+            style: .weekday
+        )
+        var bits: [String] = []
+        if let plan = data.cursorPlanName, !plan.isEmpty { bits.append(plan) }
+        if let label = data.grokPlanLabel, !label.isEmpty { bits.append(label) }
+        bits.append("weekly included")
+        if data.hasAvailableUsage == false { bits.append("exhausted") }
+
+        return OverviewRow(
+            id: .grokBot,
+            label: AeyeRowID.grokBot.label,
+            percentUsed: data.usagePercent,
+            titleLine: AeyeFormatting.titleLine(
+                label: AeyeRowID.grokBot.label,
+                percent: data.usagePercent,
+                suffix: suffix
+            ),
+            subtitle: bits.joined(separator: " · "),
+            copyText: "Grok Bot: \(AeyeFormatting.percentString(data.usagePercent))\(suffix)",
+            dashboardURL: AeyeURLs.cursorDashboard,
+            suffix: suffix
+        )
     }
 
     private func cursorError(_ message: String) -> [OverviewRow] {
@@ -149,21 +222,49 @@ public actor AeyeService {
         )]
     }
 
+    private func grokBotError(_ message: String) -> OverviewRow {
+        OverviewRow(
+            id: .grokBot,
+            label: "Grok Bot",
+            percentUsed: nil,
+            titleLine: "Grok Bot: unavailable",
+            subtitle: String(message.prefix(200)),
+            copyText: message,
+            isError: true,
+            dashboardURL: AeyeURLs.cursorDashboard
+        )
+    }
+
     // MARK: - Claude rows
 
     private func claudeRows(visibility: RowVisibility) async -> [OverviewRow] {
-        guard credentials.hasClaude, let token = credentials.claudeOAuthToken else {
+        guard credentials.hasClaude else {
             return claudeError("Claude OAuth token not set")
         }
 
         do {
-            let client = ClaudeClient(oauthToken: token)
-            let data = try await client.fetchUsage()
+            let data = try await fetchClaudeUsage()
             return buildClaudeRows(from: data, visibility: visibility)
-        } catch let error as ClaudeAPIError {
-            return claudeError(error.localizedDescription)
         } catch {
             return claudeError(error.localizedDescription)
+        }
+    }
+
+    /// Access tokens last hours, so refresh before spending a request — and once
+    /// more if the server rejects a token we thought was still good.
+    private func fetchClaudeUsage() async throws -> ClaudeUsageData {
+        let token = try await ClaudeOAuth.validAccessToken(credentials: credentials)
+        do {
+            return try await ClaudeClient(oauthToken: token).fetchUsage()
+        } catch ClaudeAPIError.http(let status) where status == 401 || status == 403 {
+            guard credentials.claudeRefreshToken != nil else {
+                throw ClaudeAPIError.http(status: status)
+            }
+            let refreshed = try await ClaudeOAuth.validAccessToken(
+                credentials: credentials,
+                forceRefresh: true
+            )
+            return try await ClaudeClient(oauthToken: refreshed).fetchUsage()
         }
     }
 
@@ -224,7 +325,8 @@ public actor AeyeService {
                 ),
                 subtitle: hourlyBits.joined(separator: " · "),
                 copyText: "Claude hourly: \(AeyeFormatting.percentString(data.fiveHour.usedPercentage))\(fiveSuffix)",
-                dashboardURL: AeyeURLs.claudeUsage
+                dashboardURL: AeyeURLs.claudeUsage,
+                suffix: fiveSuffix
             ))
         }
         if visibility.claudeWeekly {
@@ -239,7 +341,8 @@ public actor AeyeService {
                 ),
                 subtitle: weeklyBits.joined(separator: " · "),
                 copyText: "Claude weekly: \(AeyeFormatting.percentString(data.sevenDay.usedPercentage))\(sevenSuffix)",
-                dashboardURL: AeyeURLs.claudeUsage
+                dashboardURL: AeyeURLs.claudeUsage,
+                suffix: sevenSuffix
             ))
         }
         return rows

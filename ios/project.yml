@@ -8,9 +8,9 @@ options:
 settings:
   base:
     SWIFT_VERSION: "5.0"
-    MARKETING_VERSION: "0.1.0"
+    MARKETING_VERSION: "1.0.0"
     CURRENT_PROJECT_VERSION: "1"
-    DEVELOPMENT_TEAM: ""
+    DEVELOPMENT_TEAM: VDG762YNX9
     CODE_SIGN_STYLE: Automatic
 targets:
   Aeye:
@@ -20,6 +20,7 @@ targets:
       - path: Aeye
       - path: Shared
       - path: Assets.xcassets
+      - path: Config/PrivacyInfo.xcprivacy
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.giovanni.aeye
       INFOPLIST_FILE: Aeye/Info.plist
@@ -43,6 +44,13 @@ targets:
       - path: Shared
         excludes:
           - WatchBridge.swift
+          - CursorClient.swift
+          - CursorAuth.swift
+          - ClaudeClient.swift
+          - ClaudeOAuth.swift
+          - KeychainStore.swift
+          - AeyeService.swift
+      - path: Config/PrivacyInfo.xcprivacy
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.giovanni.aeye.widget
       INFOPLIST_FILE: Config/AeyeWidget-Info.plist
@@ -56,11 +64,21 @@ targets:
     sources:
       - path: AeyeWatch
       - path: Shared
+        excludes:
+          - CursorClient.swift
+          - CursorAuth.swift
+          - ClaudeClient.swift
+          - ClaudeOAuth.swift
+          - KeychainStore.swift
+          - AeyeService.swift
+      - path: Assets.xcassets
+      - path: Config/PrivacyInfo.xcprivacy
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.giovanni.aeye.watchkitapp
       INFOPLIST_FILE: AeyeWatch/Info.plist
       CODE_SIGN_ENTITLEMENTS: Config/AeyeWatch.entitlements
       INFOPLIST_KEY_CFBundleDisplayName: Aeye
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
       SKIP_INSTALL: YES
     dependencies:
       - target: AeyeWatchWidgets
@@ -73,10 +91,13 @@ targets:
       - path: Shared
         excludes:
           - CursorClient.swift
+          - CursorAuth.swift
           - ClaudeClient.swift
+          - ClaudeOAuth.swift
           - KeychainStore.swift
           - AeyeService.swift
           - WatchBridge.swift
+      - path: Config/PrivacyInfo.xcprivacy
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.giovanni.aeye.watchkitapp.widgets
       INFOPLIST_FILE: Config/AeyeWatchWidgets-Info.plist

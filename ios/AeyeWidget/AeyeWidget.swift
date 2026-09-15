@@ -12,26 +12,16 @@ struct AeyeTimelineProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (AeyeWidgetEntry) -> Void) {
-        let snapshot = SnapshotStore.load() ?? MockSnapshot.preview
+        let snapshot = SnapshotStore.load() ?? (context.isPreview ? MockSnapshot.preview : .empty)
         completion(AeyeWidgetEntry(date: Date(), snapshot: snapshot))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<AeyeWidgetEntry>) -> Void) {
-        Task {
-            let stored = SnapshotStore.load()
-            let snapshot: AeyeSnapshot
-            if stored?.isMockData == true {
-                snapshot = stored ?? MockSnapshot.preview
-            } else if context.isPreview {
-                snapshot = stored ?? MockSnapshot.preview
-            } else {
-                let service = AeyeService()
-                snapshot = await service.fetchOverview(forceRefresh: true)
-            }
-            let entry = AeyeWidgetEntry(date: Date(), snapshot: snapshot)
-            let next = Date().addingTimeInterval(AeyeFormatting.overviewCacheTTL)
-            completion(Timeline(entries: [entry], policy: .after(next)))
-        }
+        let snapshot = SnapshotStore.load()
+            ?? (context.isPreview ? MockSnapshot.preview : .empty)
+        let entry = AeyeWidgetEntry(date: Date(), snapshot: snapshot)
+        let next = Date().addingTimeInterval(15 * 60)
+        completion(Timeline(entries: [entry], policy: .after(next)))
     }
 }
 
@@ -44,7 +34,7 @@ struct AeyeOverviewWidget: Widget {
                 .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("Aeye")
-        .description("Cursor & Claude usage — same four-row layout as the Alfred workflow.")
+        .description("Cursor, Claude & Grok Bot usage — same rows as the Alfred workflow.")
         .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
@@ -54,37 +44,38 @@ struct AeyeWidgetView: View {
     @Environment(\.widgetFamily) private var family
 
     var body: some View {
-        VStack(alignment: .leading, spacing: family == .systemLarge ? 8 : 6) {
+        VStack(alignment: .leading, spacing: family == .systemLarge ? 8 : 5) {
             HStack {
                 Text("🦉 Aeye")
                     .font(.caption.bold())
+                if snapshot.isMockData {
+                    Text("Sample")
+                        .font(.system(size: 9, weight: .semibold))
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 1)
+                        .background(.orange.opacity(0.18), in: Capsule())
+                        .foregroundStyle(.orange)
+                }
                 Spacer()
-                Text(snapshot.capturedAt, style: .time)
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
+                if snapshot.capturedAt > .distantPast {
+                    Text(snapshot.capturedAt, style: .time)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
             }
 
             let rows = snapshot.visibleRows
             if rows.isEmpty {
-                Text("No rows enabled")
+                Text("Open Aeye on iPhone to refresh")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             } else {
-                ForEach(displayRows(from: rows)) { row in
+                ForEach(rows) { row in
                     WidgetRowView(row: row, compact: family == .systemMedium)
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-    }
-
-    private func displayRows(from rows: [OverviewRow]) -> [OverviewRow] {
-        switch family {
-        case .systemMedium:
-            return Array(rows.prefix(2))
-        default:
-            return rows
-        }
     }
 }
 
@@ -92,13 +83,44 @@ struct WidgetRowView: View {
     let row: OverviewRow
     var compact: Bool = false
 
+    private var textSize: CGFloat { compact ? 10 : 11 }
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(compactTitle)
-                .font(.system(size: compact ? 10 : 11, design: .monospaced))
-                .lineLimit(compact ? 2 : 3)
-                .minimumScaleFactor(0.75)
-                .foregroundStyle(row.isError ? .red : .primary)
+        VStack(alignment: .leading, spacing: 1) {
+            if row.isError {
+                Text(row.titleLine)
+                    .font(.system(size: textSize, design: .monospaced))
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.75)
+                    .foregroundStyle(.red)
+            } else {
+                // Same split as the app: one wrapping line cannot hold the
+                // label, ten meter slots, the percent and the reset detail.
+                HStack(alignment: .firstTextBaseline, spacing: 4) {
+                    Text(row.label)
+                        .font(.system(size: textSize, design: .monospaced).weight(.semibold))
+                    Spacer(minLength: 2)
+                    Text(AeyeFormatting.percentString(row.percentUsed))
+                        .font(.system(size: textSize, design: .monospaced))
+                }
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+
+                Text(AeyeFormatting.bar(percent: row.percentUsed))
+                    .font(.system(size: textSize + 1))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
+
+                if !compact, let suffix = row.suffix {
+                    let detail = AeyeFormatting.standaloneSuffix(suffix)
+                    if !detail.isEmpty {
+                        Text(detail)
+                            .font(.system(size: 9))
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+                    }
+                }
+            }
 
             if !compact, !row.subtitle.isEmpty {
                 Text(row.subtitle)
@@ -107,12 +129,6 @@ struct WidgetRowView: View {
                     .lineLimit(1)
             }
         }
-    }
-
-    /// Widget-friendly title: label + meter + pct + suffix on one line (matches Alfred).
-    private var compactTitle: String {
-        if row.isError { return row.titleLine }
-        return row.titleLine
     }
 }
 

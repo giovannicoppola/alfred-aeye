@@ -9,6 +9,10 @@ public struct OverviewRow: Codable, Sendable, Identifiable, Equatable {
     public var copyText: String
     public var isError: Bool
     public var dashboardURL: URL?
+    /// The trailing `(🕐 …)` detail, kept apart from ``titleLine`` so wider
+    /// layouts can give it its own line. Optional so older cached snapshots
+    /// still decode.
+    public var suffix: String?
 
     public init(
         id: AeyeRowID,
@@ -18,7 +22,8 @@ public struct OverviewRow: Codable, Sendable, Identifiable, Equatable {
         subtitle: String,
         copyText: String,
         isError: Bool = false,
-        dashboardURL: URL? = nil
+        dashboardURL: URL? = nil,
+        suffix: String? = nil
     ) {
         self.id = id
         self.label = label
@@ -28,6 +33,7 @@ public struct OverviewRow: Codable, Sendable, Identifiable, Equatable {
         self.copyText = copyText
         self.isError = isError
         self.dashboardURL = dashboardURL
+        self.suffix = suffix
     }
 }
 
@@ -49,8 +55,16 @@ public struct AeyeSnapshot: Codable, Sendable, Equatable {
         self.isMockData = isMockData
     }
 
+    public static let empty = AeyeSnapshot(
+        capturedAt: .distantPast,
+        rows: [],
+        visibility: .allEnabled,
+        isMockData: false
+    )
+
+    /// Error rows stay visible even if that source's toggle is off.
     public var visibleRows: [OverviewRow] {
-        rows.filter { visibility.isEnabled($0.id) }
+        rows.filter { $0.isError || visibility.isEnabled($0.id) }
     }
 }
 

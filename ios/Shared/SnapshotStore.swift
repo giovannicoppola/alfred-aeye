@@ -4,6 +4,20 @@ public enum SnapshotStore {
     public static let appGroupID = "group.com.giovanni.aeye"
     private static let snapshotFile = "aeye-snapshot.json"
     private static let visibilityKey = "row-visibility-v1"
+    private static let sampleDataKey = "sample-data-enabled-v1"
+
+    /// Backs ``SampleDataMode``. Lives in the App Group so the preference and the
+    /// sample snapshot it produces stay together.
+    public static var isSampleDataEnabled: Bool {
+        get { sharedDefaults?.bool(forKey: sampleDataKey) ?? false }
+        set { sharedDefaults?.set(newValue, forKey: sampleDataKey) }
+    }
+
+    public static var isAppGroupAvailable: Bool {
+        FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID) != nil
+    }
+
+    public static var isAvailable: Bool { snapshotURL() != nil }
 
     public static func save(_ snapshot: AeyeSnapshot) {
         guard let url = snapshotURL() else { return }
@@ -38,13 +52,22 @@ public enum SnapshotStore {
     }
 
     private static func snapshotURL() -> URL? {
-        FileManager.default
-            .containerURL(forSecurityApplicationGroupIdentifier: appGroupID)?
-            .appendingPathComponent(snapshotFile)
+        if let group = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID) {
+            return group.appendingPathComponent(snapshotFile)
+        }
+        let dir = FileManager.default
+            .urls(for: .applicationSupportDirectory, in: .userDomainMask)
+            .first?
+            .appendingPathComponent("Aeye", isDirectory: true)
+        if let dir {
+            try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+            return dir.appendingPathComponent(snapshotFile)
+        }
+        return nil
     }
 
     private static var sharedDefaults: UserDefaults? {
-        UserDefaults(suiteName: appGroupID)
+        UserDefaults(suiteName: appGroupID) ?? .standard
     }
 
     private static var encoder: JSONEncoder {

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aeye for iPhone — Cursor &amp; Claude usage at a glance</title>
-  <meta name="description" content="Keep an eye on Cursor and Claude plan limits from your iPhone — the same four-row layout as the Aeye Alfred workflow, plus Home Screen widgets." />
+  <title>Aeye for iPhone — Cursor, Claude &amp; Grok Bot usage at a glance</title>
+  <meta name="description" content="Keep an eye on Cursor, Claude, and Grok Bot plan limits from your iPhone — the same rows as the Aeye Alfred workflow, plus Home Screen widgets." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -479,9 +479,9 @@
       <div class="fade-up">
         <p class="eyebrow">iPhone companion to the Alfred workflow</p>
         <h1 class="brand">Aeye <span aria-hidden="true">🦉</span></h1>
-        <h2 class="headline">Keep an eye on Cursor &amp; Claude — from your Lock Screen.</h2>
+        <h2 class="headline">Keep an eye on Cursor, Claude &amp; Grok Bot — from your Lock Screen.</h2>
         <p class="lede">
-          The same four-row overview as the Alfred workflow — on iPhone, Home Screen widgets, and Apple Watch.
+          The same overview as the Alfred workflow — on iPhone, Home Screen widgets, and Apple Watch.
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://github.com/giovannicoppola/alfred-aeye">Get the source</a>
@@ -515,6 +515,15 @@
                 </div>
                 <div class="meter">⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪</div>
                 <div class="row-meta">(🕐 68%, 11d, Tue Aug 21) 🐢</div>
+              </div>
+
+              <div class="row">
+                <div class="row-top">
+                  <span>Grok Bot</span>
+                  <span>1.0%</span>
+                </div>
+                <div class="meter">⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪</div>
+                <div class="row-meta">(🕐 14%, 6d, Fri 12pm) 🐢 · weekly included</div>
               </div>
 
               <div class="row">
@@ -556,7 +565,7 @@
         </article>
         <article class="feature">
           <h3>One layout, two platforms</h3>
-          <p>Cursor and Claude in the same four rows you already know from Alfred.</p>
+          <p>Cursor, Claude, and Grok Bot in the same rows you already know from Alfred.</p>
         </article>
         <article class="feature">
           <h3>Matches how products report usage</h3>
@@ -579,8 +588,8 @@
       </p>
       <div class="feature-list">
         <article class="feature">
-          <h3>Four-row overview</h3>
-          <p><strong>Composer / Auto</strong>, <strong>Other models</strong>, <strong>Hourly</strong>, <strong>Weekly</strong> with green → yellow → red circle meters.</p>
+          <h3>Same rows as Alfred</h3>
+          <p><strong>Composer / Auto</strong>, <strong>Other models</strong>, <strong>Grok Bot</strong>, <strong>Hourly</strong>, <strong>Weekly</strong> with green → yellow → red circle meters.</p>
         </article>
         <article class="feature">
           <h3>Home Screen &amp; Watch</h3>
@@ -627,6 +636,8 @@
         <div class="sub">… · $39.85 / $20.00</div>
         <div class="line">Other models      ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪  0.0%  (🕐 68%, 11d, Tue Aug 21) 🐢</div>
         <div class="sub">…</div>
+        <div class="line">Grok Bot          ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪  1.0%  (🕐 14%, 6d, Fri 12pm) 🐢</div>
+        <div class="sub">Pro · Grok Bot Plan · weekly included</div>
         <div class="line">Hourly            🟢⚪⚪⚪⚪⚪⚪⚪⚪⚪  6.0%  (🕐 40%, 5h, 11:30pm) 🐢</div>
         <div class="sub">plan=… · experimental</div>
         <div class="line">Weekly            ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪  1.0%  (🕐 14%, 6d, Tue 8pm) 🎯</div>
@@ -635,6 +646,7 @@
 
       <ul class="notes">
         <li><strong>Composer / Auto</strong> / <strong>Other models</strong> — Cursor spending-page buckets</li>
+        <li><strong>Grok Bot</strong> — Cursor’s separate weekly included Bot allowance</li>
         <li><strong>$39.85 / $20.00</strong> — included compute spend this cycle vs plan included spend limit (not necessarily billed dollars)</li>
         <li><strong>(🕐 68%, 11d, …)</strong> — % of the period elapsed, then time until reset (<code>d</code> / <code>h</code> / <code>m</code>)</li>
         <li><strong>Pace emoji</strong> — spent % vs elapsed % (±8 percentage points)</li>
@@ -656,7 +668,7 @@
         <li>Clone <a href="https://github.com/giovannicoppola/alfred-aeye">alfred-aeye</a> and open <code>ios/Aeye.xcodeproj</code> (or run <code>xcodegen generate</code> from <code>ios/</code>).</li>
         <li>Set your Team on <strong>Aeye</strong>, <strong>AeyeWidgetExtension</strong>, <strong>AeyeWatch</strong>, and <strong>AeyeWatchWidgets</strong>.</li>
         <li>Confirm App Groups: <code>group.com.giovanni.aeye</code> (iPhone) and <code>group.com.giovanni.aeye.watch</code> (Watch).</li>
-        <li>Run on your <strong>iPhone</strong> (Watch app installs with it). Paste Cursor + Claude tokens in Settings, then Refresh.</li>
+        <li>Run on your <strong>iPhone</strong> (Watch app installs with it). Sign in to Cursor and Claude in Settings, then Refresh.</li>
         <li>Add the iPhone widget (Medium/Large) and optional Watch complications from the watch face editor.</li>
       </ol>
       <p style="margin-top: 1.5rem; color: var(--ink-soft);">
@@ -679,7 +691,7 @@
         </div>
       </div>
       <figure class="shot">
-        <img src="widget-preview.png" alt="Aeye Alfred workflow four-row overview screenshot" width="1200" height="800" />
+        <img src="widget-preview.png" alt="Aeye Alfred workflow overview screenshot" width="1200" height="800" />
       </figure>
     </div>
   </section>
@@ -698,8 +710,8 @@
           <p>Cursor and Claude usage endpoints can change without notice — same risk as the Alfred workflow.</p>
         </article>
         <article class="feature">
-          <h3>Manual auth on iPhone</h3>
-          <p>Unlike the Mac workflow, iOS can’t read Cursor’s local session DB. You paste tokens once in Settings.</p>
+          <h3>Sign in once on iPhone</h3>
+          <p>iOS can’t read Cursor’s local session DB the way the Mac workflow does, so you sign in to each service in Safari. Tokens land in the iPhone Keychain and refresh themselves.</p>
         </article>
         <article class="feature">
           <h3>Free for Alfred users</h3>
@@ -718,6 +730,7 @@
         Feedback welcome on
         <a href="https://github.com/giovannicoppola/alfred-aeye/issues">GitHub Issues</a>.
       </p>
+      <p style="margin-top: 0.75rem;"><a href="privacy.html">Privacy Policy</a></p>
       <p style="margin-top: 1rem;">© Giovanni Coppola · Not affiliated with Cursor, Anthropic, or Alfred.</p>
     </div>
   </footer>

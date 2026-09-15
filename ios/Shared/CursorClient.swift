@@ -11,6 +11,9 @@ public enum CursorAPIError: LocalizedError {
         case .missingSession:
             return "Cursor session token not configured. Paste your WorkosCursorSessionToken in Settings."
         case .http(let status, _):
+            if status == 401 || status == 403 {
+                return "Cursor HTTP \(status) — session expired. Paste a new token in Settings."
+            }
             return "Cursor HTTP \(status)"
         case .invalidResponse:
             return "Invalid Cursor response"
@@ -32,12 +35,21 @@ public struct CursorUsageData: Sendable {
     public var billingEnd: Date?
 }
 
+public struct GrokBotUsage: Sendable {
+    public var usagePercent: Double?
+    public var periodStart: Date?
+    public var periodEnd: Date?
+    public var hasAvailableUsage: Bool?
+    public var cursorPlanName: String?
+    public var grokPlanLabel: String?
+}
+
 public struct CursorClient: Sendable {
     private static let base = URL(string: "https://cursor.com")!
     private let cookieValue: String
     private let session: URLSession
 
-    public init(cookieValue: String, session: URLSession = .shared) {
+    public init(cookieValue: String, session: URLSession = AeyeHTTP.session) {
         self.cookieValue = cookieValue
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: "%3A%3A", with: "::")
@@ -72,14 +84,34 @@ public struct CursorClient: Sendable {
 
         return CursorUsageData(
             email: email,
-            autoPercentUsed: plan["autoPercentUsed"] as? Double,
-            apiPercentUsed: plan["apiPercentUsed"] as? Double,
-            totalSpendCents: (plan["totalSpend"] as? Double) ?? (plan["used"] as? Double),
-            limitCents: plan["limit"] as? Double,
+            autoPercentUsed: AeyeJSON.double(plan["autoPercentUsed"]),
+            apiPercentUsed: AeyeJSON.double(plan["apiPercentUsed"]),
+            totalSpendCents: AeyeJSON.double(plan["totalSpend"]) ?? AeyeJSON.double(plan["used"]),
+            limitCents: AeyeJSON.double(plan["limit"]),
             autoMessage: payload["autoModelSelectedDisplayMessage"] as? String,
             apiMessage: payload["namedModelSelectedDisplayMessage"] as? String,
             billingStart: AeyeFormatting.parseResetDate(raw: payload["billingCycleStart"]),
             billingEnd: AeyeFormatting.parseResetDate(raw: payload["billingCycleEnd"])
+        )
+    }
+
+    /// Weekly Grok Bot included usage. Returns `nil` when the account has no grant.
+    public func fetchGrokBotUsage() async throws -> GrokBotUsage? {
+        let payload = try await request(
+            path: "/api/dashboard/get-sand-usage-status",
+            method: "POST",
+            body: [:]
+        )
+        guard AeyeJSON.bool(payload["hasNonZeroIncludedLimit"]) == true else {
+            return nil
+        }
+        return GrokBotUsage(
+            usagePercent: AeyeJSON.double(payload["usagePercent"]),
+            periodStart: AeyeFormatting.parseResetDate(raw: payload["currentPeriodStart"]),
+            periodEnd: AeyeFormatting.parseResetDate(raw: payload["nextResetTimestampUtc"]),
+            hasAvailableUsage: AeyeJSON.bool(payload["hasAvailableUsage"]),
+            cursorPlanName: payload["cursorPlanName"] as? String,
+            grokPlanLabel: payload["grokPlanLabel"] as? String
         )
     }
 

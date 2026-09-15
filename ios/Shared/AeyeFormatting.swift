@@ -152,11 +152,22 @@ public enum AeyeFormatting {
         "\(label)  \(bar(percent: percent))  \(percentString(percent))\(suffix)"
     }
 
+    /// The period suffix without its wrapping parentheses, for layouts that give
+    /// it a line of its own rather than appending it to the title.
+    public static func standaloneSuffix(_ suffix: String) -> String {
+        var text = suffix.trimmingCharacters(in: .whitespaces)
+        guard text.hasPrefix("("), let close = text.firstIndex(of: ")") else { return text }
+        text.remove(at: close)
+        text.removeFirst()
+        return text.trimmingCharacters(in: .whitespaces)
+    }
+
     // MARK: - Watch compact presentation
 
-    /// Five-slot meter for Watch rows (same green→yellow→red thresholds).
+    /// Watch row meter — same width as the phone and Alfred, so a row reads the
+    /// same everywhere. `minimumScaleFactor` on the label handles narrow watches.
     public static func compactBar(percent: Double?) -> String {
-        bar(percent: percent, width: 5)
+        bar(percent: percent, width: 10)
     }
 
     public static func watchRowLine(row: OverviewRow) -> String {
@@ -179,10 +190,7 @@ public enum AeyeFormatting {
             return Date(timeIntervalSince1970: TimeInterval(epoch))
         }
         guard let raw else { return nil }
-        if let ms = raw as? Int {
-            return Date(timeIntervalSince1970: TimeInterval(ms) / 1000.0)
-        }
-        if let ms = raw as? Double {
+        if let ms = AeyeJSON.double(raw) {
             return Date(timeIntervalSince1970: ms / 1000.0)
         }
         if let str = raw as? String {

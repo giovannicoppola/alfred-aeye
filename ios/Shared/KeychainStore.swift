@@ -5,6 +5,8 @@ public enum KeychainStore {
     public enum Key: String {
         case cursorSessionToken = "aeye.cursor.session"
         case claudeOAuthToken = "aeye.claude.oauth"
+        case claudeRefreshToken = "aeye.claude.refresh"
+        case claudeTokenExpiry = "aeye.claude.expiry"
     }
 
     public static func save(_ value: String, for key: Key) throws {
@@ -17,7 +19,7 @@ public enum KeychainStore {
         SecItemDelete(query as CFDictionary)
         var add = query
         add[kSecValueData as String] = data
-        add[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlock
+        add[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
         let status = SecItemAdd(add as CFDictionary, nil)
         guard status == errSecSuccess else {
             throw KeychainError.saveFailed(status)
@@ -61,24 +63,66 @@ public enum KeychainStore {
 
 public struct CredentialsStore {
     public var cursorSessionToken: String? {
-        get { KeychainStore.load(for: .cursorSessionToken) }
-        set {
-            if let newValue, !newValue.isEmpty {
-                try? KeychainStore.save(newValue, for: .cursorSessionToken)
-            } else {
-                KeychainStore.delete(for: .cursorSessionToken)
-            }
-        }
+        KeychainStore.load(for: .cursorSessionToken)
     }
 
     public var claudeOAuthToken: String? {
-        get { KeychainStore.load(for: .claudeOAuthToken) }
-        set {
-            if let newValue, !newValue.isEmpty {
-                try? KeychainStore.save(newValue, for: .claudeOAuthToken)
-            } else {
-                KeychainStore.delete(for: .claudeOAuthToken)
-            }
+        KeychainStore.load(for: .claudeOAuthToken)
+    }
+
+    public func saveCursorSessionToken(_ token: String) throws {
+        let trimmed = token.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmed.isEmpty {
+            KeychainStore.delete(for: .cursorSessionToken)
+        } else {
+            try KeychainStore.save(trimmed, for: .cursorSessionToken)
+        }
+    }
+
+    public var claudeRefreshToken: String? {
+        guard let token = KeychainStore.load(for: .claudeRefreshToken),
+              !token.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        else { return nil }
+        return token
+    }
+
+    public var claudeTokenExpiry: Date? {
+        guard let raw = KeychainStore.load(for: .claudeTokenExpiry),
+              let seconds = Double(raw)
+        else { return nil }
+        return Date(timeIntervalSince1970: seconds)
+    }
+
+    /// Pasting a token clears any refresh token alongside it — the two are only
+    /// ever valid as a pair.
+    public func saveClaudeOAuthToken(_ token: String) throws {
+        let trimmed = token.trimmingCharacters(in: .whitespacesAndNewlines)
+        KeychainStore.delete(for: .claudeRefreshToken)
+        KeychainStore.delete(for: .claudeTokenExpiry)
+        if trimmed.isEmpty {
+            KeychainStore.delete(for: .claudeOAuthToken)
+        } else {
+            try KeychainStore.save(trimmed, for: .claudeOAuthToken)
+        }
+    }
+
+    public func saveClaudeTokens(_ tokens: ClaudeOAuth.Tokens) throws {
+        try KeychainStore.save(
+            tokens.accessToken.trimmingCharacters(in: .whitespacesAndNewlines),
+            for: .claudeOAuthToken
+        )
+        if let refresh = tokens.refreshToken, !refresh.isEmpty {
+            try KeychainStore.save(refresh, for: .claudeRefreshToken)
+        } else {
+            KeychainStore.delete(for: .claudeRefreshToken)
+        }
+        if let expiresAt = tokens.expiresAt {
+            try KeychainStore.save(
+                String(expiresAt.timeIntervalSince1970),
+                for: .claudeTokenExpiry
+            )
+        } else {
+            KeychainStore.delete(for: .claudeTokenExpiry)
         }
     }
 

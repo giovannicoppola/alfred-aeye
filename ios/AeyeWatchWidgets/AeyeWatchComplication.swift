@@ -13,14 +13,14 @@ struct AeyeWatchProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (AeyeWatchEntry) -> Void) {
-        let snap = WatchSnapshotCache.load() ?? MockSnapshot.preview
+        let snap = WatchSnapshotCache.load() ?? (context.isPreview ? MockSnapshot.preview : .empty)
         completion(makeEntry(snap))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<AeyeWatchEntry>) -> Void) {
-        let snap = WatchSnapshotCache.load() ?? MockSnapshot.preview
+        let snap = WatchSnapshotCache.load() ?? (context.isPreview ? MockSnapshot.preview : .empty)
         let entry = makeEntry(snap)
-        let next = Date().addingTimeInterval(AeyeFormatting.overviewCacheTTL)
+        let next = Date().addingTimeInterval(15 * 60)
         completion(Timeline(entries: [entry], policy: .after(next)))
     }
 
@@ -39,7 +39,7 @@ struct AeyeWatchComplication: Widget {
                 .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("Aeye")
-        .description("Cursor & Claude usage at a glance.")
+        .description("Cursor, Claude & Grok Bot usage at a glance.")
         .supportedFamilies([
             .accessoryCircular,
             .accessoryRectangular,

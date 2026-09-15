@@ -10,6 +10,9 @@ public enum ClaudeAPIError: LocalizedError {
         case .missingToken:
             return "Claude OAuth token not configured. Paste your Claude Code OAuth token in Settings."
         case .http(let status):
+            if status == 401 || status == 403 {
+                return "Claude HTTP \(status) — OAuth token expired. Paste a new token in Settings."
+            }
             return "Claude HTTP \(status)"
         case .invalidResponse:
             return "Invalid Claude response"
@@ -37,7 +40,7 @@ public struct ClaudeClient: Sendable {
     private let oauthToken: String
     private let session: URLSession
 
-    public init(oauthToken: String, session: URLSession = .shared) {
+    public init(oauthToken: String, session: URLSession = AeyeHTTP.session) {
         self.oauthToken = oauthToken.trimmingCharacters(in: .whitespacesAndNewlines)
         self.session = session
     }
@@ -110,7 +113,7 @@ public struct ClaudeClient: Sendable {
         var pct = utilizationToPercent(utilization)
         let reset = AeyeFormatting.parseResetDate(
             raw: dict["resets_at"],
-            epoch: dict["resets_at_epoch"] as? Int
+            epoch: AeyeJSON.int(dict["resets_at_epoch"])
         )
         if let reset, now >= reset { pct = nil }
         return ClaudeLimitWindow(usedPercentage: pct, resetsAt: reset)
@@ -119,10 +122,7 @@ public struct ClaudeClient: Sendable {
     private func utilizationToPercent(_ value: Any?) -> Double? {
         guard let value else { return nil }
         if let b = value as? Bool, b { return nil }
-        var num: Double?
-        if let d = value as? Double { num = d }
-        if let i = value as? Int { num = Double(i) }
-        guard let num, num.isFinite, num >= 0 else { return nil }
+        guard let num = AeyeJSON.double(value), num.isFinite, num >= 0 else { return nil }
         if num > 100 { return num <= 101 ? 100.0 : nil }
         return (num * 10).rounded() / 10
     }
