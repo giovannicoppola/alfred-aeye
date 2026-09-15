@@ -1,6 +1,6 @@
 # Aeye 🦉
 
-See your **Cursor** and **Claude** usage toward plan limits — right from [Alfred](https://www.alfredapp.com/).
+See your **Cursor**, **Claude**, and **Grok Bot** usage toward plan limits — right from [Alfred](https://www.alfredapp.com/).
 
 <div align="center">
   <img src="src/icon.png" width="128" alt="Aeye icon">
@@ -13,16 +13,20 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-aeye/total?c
 
 [Screenshot](docs/screenshot.png)
 
+**On iPhone too** — [Aeye for iOS](ios/README.md) is a free companion app with the same rows, plus
+Home Screen widgets and an Apple Watch app.
+
 # Motivation ✅
 
 - Quickly check how much of your AI quotas you’ve used without opening dashboards
-- One keyword for both **Cursor** and **Claude**
-- Four rows that match how the products report usage (Composer/Auto vs other models; hourly vs weekly)
+- One keyword for Cursor, Claude, and Grok Bot
+- Rows that match how the products report usage (Composer/Auto vs other models; Grok Bot weekly; Claude hourly vs weekly)
 
 # Features ✨
 
-- **Four-row overview** — Composer/Auto, Other models, Hourly, Weekly with green → yellow → red circle meters
+- **Five-row overview** — Composer/Auto, Other models, Grok Bot, Hourly, Weekly with green → yellow → red circle meters
 - **Cursor** — same split as the spending page; included spend vs limit; days until reset
+- **Grok Bot** — Cursor’s separate weekly included allowance (same Cursor session; hidden if the account has no grant)
 - **Claude** — hourly (5h) session limit + weekly limit; Claude Code icon on the hourly row
 - **Cached overview** (60s) — avoids re-hitting the APIs on every keystroke
 - **Configurable** — keyword + checkboxes for which rows to show (all on by default)
@@ -46,7 +50,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-aeye/total?c
 # Usage 📖
 
 1. Type the keyword (default: `aieye`)
-2. You’ll see the enabled rows (all four on by default):
+2. You’ll see the enabled rows (all five on by default):
 
 ### Overview (example)
 
@@ -57,6 +61,9 @@ Composer / Auto   🟢⚪⚪⚪⚪⚪⚪⚪⚪⚪  13.0%  (🕐 68%, 11d, Tue Au
 Other models      ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪  0.0%  (🕐 68%, 11d, Tue Aug 21) 🐢
                   …
 
+Grok Bot          🟢⚪⚪⚪⚪⚪⚪⚪⚪⚪  1.0%  (🕐 14%, 6d, Fri 12pm) 🐢
+                  Pro · Grok Bot Plan · weekly included
+
 Hourly            🟢⚪⚪⚪⚪⚪⚪⚪⚪⚪  6.0%  (🕐 40%, 5h, 11:30pm) 🐢
                   plan=… · experimental
 
@@ -65,6 +72,7 @@ Weekly            ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪  1.0%  (🕐 14%, 6d, Tue 8pm) 
 ```
 
 - **Composer / Auto** / **Other models** — Cursor’s spending-page buckets (`autoPercentUsed` / `apiPercentUsed`)
+- **Grok Bot** — Cursor’s weekly included Bot allowance (`get-sand-usage-status`); chats draw from this pool, while heavy routines can still count against Other models
 - `$39.85 / $20.00` — included **compute spend** this cycle vs plan **included spend** limit (not necessarily what you are billed)
 - `(🕐 68%, 11d, …)` — **% of the period elapsed**, then time until reset (`d` / `h` / `m`)
 - Pace emoji after the parenthesis — compares % spent vs % elapsed: 🐢 underspending · 🎯 on track · 🔥 overspending (±8pp band)
@@ -94,6 +102,7 @@ Claude percentages are labeled **`experimental`** when they come from Anthropic�
 - Claude weekly/hourly % need Claude Code auth on this machine; without it, those rows may show `n/a`
 - Claude % come from Anthropic’s undocumented OAuth usage API (`experimental`); they can change shape without notice
 - Cursor uses Cursor’s undocumented dashboard API; it can change without notice
+- Grok Bot % come from Cursor’s undocumented `get-sand-usage-status` endpoint; the row is omitted when the account has no included Bot allowance
 - Overview cache lasts 60 seconds — force a refresh by waiting or clearing Alfred’s workflow cache
 
 # Acknowledgments 😀
@@ -110,6 +119,7 @@ Both upstream packages are **vendored** in this repo (no surprise `pip install` 
 
 # Changelog 🧰
 
+- 2026-09-12: version 0.2.0 — Grok Bot weekly included-usage row (Cursor session)
 - 2026-08-12: version 0.1.0 — initial release (Cursor + Claude, four-row overview, 60s cache)
 
 # Feedback 🧐

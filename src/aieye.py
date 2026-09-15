@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Alfred Script Filter: Cursor + Claude usage toward plan limits."""
+"""Alfred Script Filter: Cursor + Claude + Grok Bot usage toward plan limits."""
 
 from __future__ import annotations
 
@@ -273,14 +273,20 @@ def _cmd_open(url: str, subtitle: str) -> Dict[str, Any]:
 
 # ---- Cursor -----------------------------------------------------------------
 
-def _cursor_payload() -> Dict[str, Any]:
-    from cursor_usage.api import CursorAPIError, CursorClient
-    from cursor_usage.auth import SessionNotFound, resolve_cookie_value
+def _cursor_session() -> Dict[str, Any]:
+    from cursor_usage.api import CursorClient
+    from cursor_usage.auth import resolve_cookie_value
 
     cookie = resolve_cookie_value()
     client = CursorClient(cookie)
     me = client.me()
     email = me.get("email") or "signed-in user"
+    return {"client": client, "email": email}
+
+
+def _cursor_period_payload(client: Any) -> Dict[str, Any]:
+    from cursor_usage.api import CursorAPIError
+
     payload = None
     last_err: Optional[Exception] = None
     for fn in (client.current_period_usage, client.usage_summary):
@@ -295,7 +301,7 @@ def _cursor_payload() -> Dict[str, Any]:
         raise RuntimeError(
             f"Cycle limits unavailable: {last_err}" if last_err else "No limits data"
         )
-    return {"email": email, "payload": payload}
+    return payload
 
 
 def _cursor_fields(data: Dict[str, Any]) -> Dict[str, Any]:
@@ -334,14 +340,53 @@ def _cursor_fields(data: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _grok_bot_item(sand: Dict[str, Any], email: str) -> Optional[Dict[str, Any]]:
+    """Weekly Grok Bot included-usage row, or None when the account has no grant."""
+    if sand.get("hasNonZeroIncludedLimit") is not True:
+        return None
+    pct = sand.get("usagePercent")
+    try:
+        pct_f: Optional[float] = float(pct) if pct is not None else None
+    except (TypeError, ValueError):
+        pct_f = None
+    start_dt = _parse_reset_dt(sand.get("currentPeriodStart"))
+    reset_dt = _parse_reset_dt(sand.get("nextResetTimestampUtc"))
+    suffix = _period_suffix(
+        end=reset_dt,
+        start=start_dt,
+        spent_pct=pct_f,
+        style="weekday",
+    )
+    bits: List[str] = []
+    plan = sand.get("cursorPlanName")
+    if plan:
+        bits.append(str(plan))
+    label = sand.get("grokPlanLabel")
+    if label:
+        bits.append(str(label))
+    bits.append("weekly included")
+    if sand.get("hasAvailableUsage") is False:
+        bits.append("exhausted")
+    return _item(
+        title=f"Grok Bot  {_bar(pct_f)}  {_pct(pct_f)}{suffix}",
+        subtitle=" · ".join(bits) or email,
+        arg=f"Grok Bot: {_pct(pct_f)}{suffix}",
+        icon=ICON_CURSOR,
+        mods=_cmd_open(URL_CURSOR, "Open cursor.com/dashboard"),
+    )
+
+
 def cursor_overview_items(
-    *, include_auto: bool = True, include_other: bool = True
+    *,
+    include_auto: bool = True,
+    include_other: bool = True,
+    include_grok: bool = True,
 ) -> List[Dict[str, Any]]:
-    """Composer/Auto + Other models — same split as the Cursor spending page."""
-    if not include_auto and not include_other:
+    """Composer/Auto + Other models + Grok Bot weekly included usage."""
+    if not include_auto and not include_other and not include_grok:
         return []
     try:
-        fields = _cursor_fields(_cursor_payload())
+        session = _cursor_session()
     except Exception as exc:
         from cursor_usage.auth import SessionNotFound
         from cursor_usage.api import CursorAPIError
@@ -352,52 +397,79 @@ def cursor_overview_items(
             return [_error_item("Cursor", f"HTTP {exc.status}", ICON_CURSOR)]
         return [_error_item("Cursor", str(exc), ICON_CURSOR)]
 
-    auto_suffix = _period_suffix(
-        end=fields["reset_dt"],
-        start=fields["start_dt"],
-        spent_pct=fields["auto_pct"],
-        style="calendar",
-    )
-    other_suffix = _period_suffix(
-        end=fields["reset_dt"],
-        start=fields["start_dt"],
-        spent_pct=fields["api_pct"],
-        style="calendar",
-    )
-    auto_sub = " · ".join(
-        bit
-        for bit in [fields["auto_msg"], *fields["spend_bits"]]
-        if bit
-    ) or fields["email"]
-    other_sub = fields["api_msg"] or f"API / named models · {fields['email']}"
-
+    client = session["client"]
+    email = session["email"]
     items: List[Dict[str, Any]] = []
-    if include_auto:
-        items.append(
-            _item(
-                title=(
-                    f"Composer / Auto  {_bar(fields['auto_pct'])}  {_pct(fields['auto_pct'])}"
-                    f"{auto_suffix}"
-                ),
-                subtitle=auto_sub,
-                arg=f"Cursor Composer/Auto: {_pct(fields['auto_pct'])}{auto_suffix}",
-                icon=ICON_CURSOR,
-                mods=_cmd_open(URL_CURSOR, "Open cursor.com/dashboard"),
+
+    if include_auto or include_other:
+        try:
+            fields = _cursor_fields(
+                {"email": email, "payload": _cursor_period_payload(client)}
             )
-        )
-    if include_other:
-        items.append(
-            _item(
-                title=(
-                    f"Other models  {_bar(fields['api_pct'])}  {_pct(fields['api_pct'])}"
-                    f"{other_suffix}"
-                ),
-                subtitle=other_sub,
-                arg=f"Cursor other models: {_pct(fields['api_pct'])}{other_suffix}",
-                icon=ICON_CURSOR,
-                mods=_cmd_open(URL_CURSOR, "Open cursor.com/dashboard"),
+            auto_suffix = _period_suffix(
+                end=fields["reset_dt"],
+                start=fields["start_dt"],
+                spent_pct=fields["auto_pct"],
+                style="calendar",
             )
-        )
+            other_suffix = _period_suffix(
+                end=fields["reset_dt"],
+                start=fields["start_dt"],
+                spent_pct=fields["api_pct"],
+                style="calendar",
+            )
+            auto_sub = " · ".join(
+                bit
+                for bit in [fields["auto_msg"], *fields["spend_bits"]]
+                if bit
+            ) or fields["email"]
+            other_sub = fields["api_msg"] or f"API / named models · {fields['email']}"
+            if include_auto:
+                items.append(
+                    _item(
+                        title=(
+                            f"Composer / Auto  {_bar(fields['auto_pct'])}  "
+                            f"{_pct(fields['auto_pct'])}{auto_suffix}"
+                        ),
+                        subtitle=auto_sub,
+                        arg=f"Cursor Composer/Auto: {_pct(fields['auto_pct'])}{auto_suffix}",
+                        icon=ICON_CURSOR,
+                        mods=_cmd_open(URL_CURSOR, "Open cursor.com/dashboard"),
+                    )
+                )
+            if include_other:
+                items.append(
+                    _item(
+                        title=(
+                            f"Other models  {_bar(fields['api_pct'])}  "
+                            f"{_pct(fields['api_pct'])}{other_suffix}"
+                        ),
+                        subtitle=other_sub,
+                        arg=f"Cursor other models: {_pct(fields['api_pct'])}{other_suffix}",
+                        icon=ICON_CURSOR,
+                        mods=_cmd_open(URL_CURSOR, "Open cursor.com/dashboard"),
+                    )
+                )
+        except Exception as exc:
+            from cursor_usage.api import CursorAPIError
+
+            if isinstance(exc, CursorAPIError):
+                items.append(_error_item("Cursor", f"HTTP {exc.status}", ICON_CURSOR))
+            else:
+                items.append(_error_item("Cursor", str(exc), ICON_CURSOR))
+
+    if include_grok:
+        try:
+            row = _grok_bot_item(client.sand_usage_status(), email)
+            if row:
+                items.append(row)
+        except Exception as exc:
+            from cursor_usage.api import CursorAPIError
+
+            if isinstance(exc, CursorAPIError):
+                items.append(_error_item("Grok Bot", f"HTTP {exc.status}", ICON_CURSOR))
+            else:
+                items.append(_error_item("Grok Bot", str(exc), ICON_CURSOR))
     return items
 
 
@@ -638,6 +710,7 @@ def _show_flags() -> Dict[str, bool]:
     return {
         "cursor_auto": _env_flag("show_cursor_auto"),
         "cursor_other": _env_flag("show_cursor_other"),
+        "cursor_grok": _env_flag("show_cursor_grok"),
         "claude_hourly": _env_flag("show_claude_hourly"),
         "claude_weekly": _env_flag("show_claude_weekly"),
     }
@@ -653,6 +726,7 @@ def build_overview_payload() -> Dict[str, Any]:
     items = cursor_overview_items(
         include_auto=flags["cursor_auto"],
         include_other=flags["cursor_other"],
+        include_grok=flags["cursor_grok"],
     ) + claude_overview_items(
         include_hourly=flags["claude_hourly"],
         include_weekly=flags["claude_weekly"],

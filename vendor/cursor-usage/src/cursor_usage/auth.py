@@ -29,6 +29,7 @@ import os
 import sqlite3
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 KEYCHAIN_SERVICE = "cursor-access-token"
@@ -47,6 +48,17 @@ def _jwt_claims(token):
         return json.loads(base64.urlsafe_b64decode(payload))
     except Exception:
         return {}
+
+
+def _is_expired(claims, skew=60):
+    """True when the JWT ``exp`` claim is missing-ok but already in the past."""
+    exp = claims.get("exp")
+    if exp is None:
+        return False
+    try:
+        return int(exp) <= time.time() + skew
+    except (TypeError, ValueError):
+        return False
 
 
 def _cookie_id(claims):
@@ -160,16 +172,21 @@ def resolve_cookie_value(verbose=False):
     # 2. Local stores -- require a session token; skip api_key_token.
     tried = ["$CURSOR_SESSION_TOKEN"]
     saw_api_key = False
+    saw_expired = False
     for name, source in _LOCAL_SOURCES:
         tried.append(name)
         token = source()
         if not token:
             continue
         token = token.strip().replace("%3A%3A", "::")
+        jwt = token.split("::", 1)[-1]
+        claims = _jwt_claims(jwt)
+        if _is_expired(claims):
+            saw_expired = True
+            continue
         if "::" in token:  # already a full "id::jwt" cookie value
             _log(verbose, name)
             return token
-        claims = _jwt_claims(token)
         cid = _cookie_id(claims)
         if not cid:
             continue
@@ -183,6 +200,9 @@ def resolve_cookie_value(verbose=False):
     if saw_api_key:
         hint = ("\nNote: found an api_key_token (Agent API), but that does not "
                 "authenticate the\nusage dashboard. A *web session* is needed.")
+    elif saw_expired:
+        hint = ("\nNote: found an expired Cursor session. Sign in again in the "
+                "Cursor app.")
     raise SessionNotFound(
         "Could not find a usable Cursor session token.\n"
         "Tried: %s.%s\n\n"
