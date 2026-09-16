@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aeye for iPhone — Cursor, Claude &amp; Grok Bot usage at a glance</title>
+  <meta name="description" content="Keep an eye on Cursor, Claude, and Grok Bot plan limits from your iPhone — the same rows as the Aeye Alfred workflow, plus Home Screen widgets." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #16202b;
+      --ink-soft: #3d4a58;
+      --muted: #5f6d7a;
+      --paper: #f3f6f8;
+      --mist: #d7e2ea;
+      --sky: #9db8c9;
+      --amber: #c07828;
+      --amber-deep: #8f5414;
+      --green: #2f9e6a;
+      --yellow: #d4a017;
+      --red: #c44b3c;
+      --empty: #c5ced6;
+      --ring: color-mix(in srgb, var(--ink) 10%, transparent);
+      --shadow: 0 28px 60px color-mix(in srgb, var(--ink) 16%, transparent);
+      --radius: 1.25rem;
+      --max: 68rem;
+      --font-display: "Fraunces", Georgia, serif;
+      --font-body: "Figtree", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font-body);
+      background:
+        radial-gradient(1200px 600px at 15% -10%, #eef4f8 0%, transparent 55%),
+        radial-gradient(900px 500px at 90% 5%, #e8e0d4 0%, transparent 50%),
+        linear-gradient(180deg, #eef2f5 0%, var(--paper) 38%, #e9eef2 100%);
+      line-height: 1.55;
+    }
+
+    a { color: var(--amber-deep); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .wrap {
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* ——— Hero ——— */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding: 1.25rem 0 3.5rem;
+      overflow: clip;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -20% -10% auto;
+      height: 70%;
+      background:
+        radial-gradient(ellipse at 30% 40%, color-mix(in srgb, var(--sky) 55%, white) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 20%, color-mix(in srgb, var(--amber) 22%, white) 0%, transparent 55%);
+      animation: drift 18s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes drift {
+      from { transform: translate3d(-2%, 0, 0) scale(1); }
+      to { transform: translate3d(3%, 2%, 0) scale(1.05); }
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 2.5rem;
+      align-items: end;
+    }
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 3rem;
+        align-items: center;
+        min-height: calc(100svh - 5rem);
+      }
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 8vw, 5.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin: 0 0 1rem;
+    }
+
+    .brand span {
+      display: inline-block;
+      transform-origin: 70% 30%;
+      animation: blink 5.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.15); }
+    }
+
+    .headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 2.6vw, 2rem);
+      font-weight: 500;
+      line-height: 1.25;
+      margin: 0 0 0.85rem;
+      max-width: 22ch;
+      color: var(--ink);
+    }
+
+    .lede {
+      margin: 0 0 1.75rem;
+      max-width: 36ch;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.85rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--ink);
+      color: #f7fafc;
+    }
+    .btn-primary:hover { background: #0d141c; }
+    .btn-ghost {
+      background: color-mix(in srgb, white 55%, transparent);
+      border-color: var(--ring);
+      color: var(--ink);
+      backdrop-filter: blur(8px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--amber-deep);
+      margin-bottom: 1rem;
+    }
+
+    /* Phone mock — dominant hero visual */
+    .phone-stage {
+      display: grid;
+      place-items: center;
+      animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .phone {
+      width: min(100%, 22rem);
+      aspect-ratio: 9 / 19.2;
+      border-radius: 2.4rem;
+      background: linear-gradient(160deg, #1c2733, #0f151c);
+      padding: 0.7rem;
+      box-shadow: var(--shadow), inset 0 0 0 1px color-mix(in srgb, white 12%, transparent);
+      position: relative;
+    }
+
+    .phone-screen {
+      height: 100%;
+      border-radius: 1.9rem;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, #eef3f7 0%, #dde6ed 100%);
+      display: flex;
+      flex-direction: column;
+      padding: 1.4rem 0.95rem 1rem;
+    }
+
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      padding: 0 0.35rem;
+    }
+
+    .widget {
+      background: color-mix(in srgb, white 78%, transparent);
+      border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+      border-radius: 1.1rem;
+      padding: 0.85rem 0.9rem;
+      box-shadow: 0 10px 30px color-mix(in srgb, var(--ink) 8%, transparent);
+      backdrop-filter: blur(10px);
+    }
+
+    .widget-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      margin: 0 0 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .widget-title small {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .row {
+      display: grid;
+      gap: 0.15rem;
+      margin-bottom: 0.7rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .row:last-child { margin-bottom: 0; }
+
+    .row-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.4rem;
+      align-items: baseline;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .meter {
+      font-size: 0.62rem;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .row-meta {
+      font-size: 0.62rem;
+      color: var(--muted);
+    }
+
+    .home-dots {
+      margin-top: auto;
+      display: flex;
+      justify-content: center;
+      gap: 0.35rem;
+      padding-top: 1.2rem;
+    }
+    .home-dots i {
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--ink) 25%, transparent);
+    }
+
+    /* ——— Sections ——— */
+    section {
+      padding: 4.5rem 0;
+    }
+
+    section.alt {
+      background: color-mix(in srgb, white 55%, transparent);
+      border-block: 1px solid var(--ring);
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber-deep);
+      margin: 0 0 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.02em;
+      max-width: 18ch;
+      line-height: 1.15;
+    }
+
+    .section-lead {
+      margin: 0 0 2rem;
+      color: var(--ink-soft);
+      max-width: 46ch;
+      font-size: 1.05rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 760px) {
+      .feature-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem 2rem;
+      }
+    }
+
+    .feature {
+      padding: 0;
+      border: 0;
+      background: none;
+    }
+
+    .feature h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+    }
+
+    .feature strong { color: var(--ink); }
+
+    /* Reading the numbers */
+    .legend {
+      display: grid;
+      gap: 1rem;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 0.82rem;
+      background: var(--ink);
+      color: #d7e0e8;
+      border-radius: var(--radius);
+      padding: 1.35rem 1.4rem;
+      overflow-x: auto;
+      box-shadow: var(--shadow);
+    }
+
+    .legend .line { white-space: nowrap; }
+    .legend .sub {
+      color: #8fa0b0;
+      margin: 0.15rem 0 0.85rem 1.1rem;
+      white-space: nowrap;
+    }
+    .legend .sub:last-child { margin-bottom: 0; }
+
+    .notes {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+      color: var(--ink-soft);
+    }
+    .notes li { margin-left: 1rem; }
+
+    /* Setup steps */
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 1rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .steps li {
+      position: relative;
+      padding: 1.1rem 1.2rem 1.1rem 3.4rem;
+      border-radius: var(--radius);
+      background: color-mix(in srgb, white 70%, transparent);
+      border: 1px solid var(--ring);
+    }
+
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 1rem;
+      top: 1.05rem;
+      width: 1.7rem;
+      height: 1.7rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      background: var(--amber);
+      color: white;
+    }
+
+    /* Companion strip */
+    .companion {
+      display: grid;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .companion {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+    }
+
+    .shot {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--ring);
+      box-shadow: var(--shadow);
+      background: #111;
+    }
+
+    .shot img {
+      width: 100%;
+      opacity: 0.95;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0 4rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    footer .brand-mini {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin: 0 0 0.5rem;
+    }
+
+    .fade-up {
+      animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+    .fade-up-delay { animation-delay: 0.12s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="fade-up">
+        <p class="eyebrow">iPhone companion to the Alfred workflow</p>
+        <h1 class="brand">Aeye <span aria-hidden="true">🦉</span></h1>
+        <h2 class="headline">Keep an eye on Cursor, Claude &amp; Grok Bot — from your Lock Screen.</h2>
+        <p class="lede">
+          The same overview as the Alfred workflow — on iPhone, Home Screen widgets, and Apple Watch.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/giovannicoppola/alfred-aeye">Get the source</a>
+          <a class="btn btn-ghost" href="#features">See features</a>
+        </div>
+      </div>
+
+      <div class="phone-stage fade-up fade-up-delay" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+            <div class="widget">
+              <div class="widget-title">
+                Aeye
+                <small>updated just now</small>
+              </div>
+
+              <div class="row">
+                <div class="row-top">
+                  <span>Composer / Auto</span>
+                  <span>13.0%</span>
+                </div>
+                <div class="meter">🟢⚪⚪⚪⚪⚪⚪⚪⚪⚪</div>
+                <div class="row-meta">(🕐 68%, 11d, Tue Aug 21) 🐢 · $39.85 / $20.00</div>
+              </div>
+
+              <div class="row">
+                <div class="row-top">
+                  <span>Other models</span>
+                  <span>0.0%</span>
+                </div>
+                <div class="meter">⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪</div>
+                <div class="row-meta">(🕐 68%, 11d, Tue Aug 21) 🐢</div>
+              </div>
+
+              <div class="row">
+                <div class="row-top">
+                  <span>Grok Bot</span>
+                  <span>1.0%</span>
+                </div>
+                <div class="meter">⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪</div>
+                <div class="row-meta">(🕐 14%, 6d, Fri 12pm) 🐢 · weekly included</div>
+              </div>
+
+              <div class="row">
+                <div class="row-top">
+                  <span>Hourly</span>
+                  <span>6.0%</span>
+                </div>
+                <div class="meter">🟢⚪⚪⚪⚪⚪⚪⚪⚪⚪</div>
+                <div class="row-meta">(🕐 40%, 5h, 11:30pm) 🐢 · experimental</div>
+              </div>
+
+              <div class="row">
+                <div class="row-top">
+                  <span>Weekly</span>
+                  <span>1.0%</span>
+                </div>
+                <div class="meter">⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪</div>
+                <div class="row-meta">(🕐 14%, 6d, Tue 8pm) 🎯 · experimental</div>
+              </div>
+            </div>
+            <div class="home-dots"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="why">
+    <div class="wrap">
+      <p class="section-kicker">Motivation</p>
+      <h2 class="section-title">Dashboards are a context switch.</h2>
+      <p class="section-lead">
+        You bounce between Cursor and Claude. You don’t want to open two billing pages mid-task just to see how much quota is left.
+      </p>
+      <div class="feature-list">
+        <article class="feature">
+          <h3>Glanceable on iPhone</h3>
+          <p>Check quotas before a long session — from a widget or the app — without hunting through web dashboards.</p>
+        </article>
+        <article class="feature">
+          <h3>One layout, two platforms</h3>
+          <p>Cursor, Claude, and Grok Bot in the same rows you already know from Alfred.</p>
+        </article>
+        <article class="feature">
+          <h3>Matches how products report usage</h3>
+          <p>Composer/Auto vs other models; hourly vs weekly — not a flattened “tokens used” blob.</p>
+        </article>
+        <article class="feature">
+          <h3>Companion, not a replacement</h3>
+          <p>Built for people who already use <strong>Aeye for Alfred</strong> and want the same glance away from the Mac.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="alt">
+    <div class="wrap">
+      <p class="section-kicker">Features</p>
+      <h2 class="section-title">Everything Alfred shows — on your phone.</h2>
+      <p class="section-lead">
+        Free, open source, no account, no backend. Credentials stay in the iOS Keychain.
+      </p>
+      <div class="feature-list">
+        <article class="feature">
+          <h3>Same rows as Alfred</h3>
+          <p><strong>Composer / Auto</strong>, <strong>Other models</strong>, <strong>Grok Bot</strong>, <strong>Hourly</strong>, <strong>Weekly</strong> with green → yellow → red circle meters.</p>
+        </article>
+        <article class="feature">
+          <h3>Home Screen &amp; Watch</h3>
+          <p><strong>Medium</strong> / <strong>Large</strong> iPhone widgets, plus an Apple Watch app and complications — synced from the phone, no tokens on the Watch.</p>
+        </article>
+        <article class="feature">
+          <h3>Cursor spending parity</h3>
+          <p>Same split as Cursor’s spending page; included compute spend vs plan included limit; days until reset.</p>
+        </article>
+        <article class="feature">
+          <h3>Claude session + weekly</h3>
+          <p>5-hour hourly window and weekly limit, with the same period suffix and pace emoji as the Mac workflow.</p>
+        </article>
+        <article class="feature">
+          <h3>Pace at a glance</h3>
+          <p>🐢 underspending · 🎯 on track · 🔥 overspending — compares % spent vs % of the period elapsed (±8pp band).</p>
+        </article>
+        <article class="feature">
+          <h3>60-second cache</h3>
+          <p>Avoids re-hitting undocumented APIs on every glance; pull to refresh when you need a fresh read.</p>
+        </article>
+        <article class="feature">
+          <h3>Configurable rows</h3>
+          <p>Toggle which rows appear — same idea as Alfred’s Configure Workflow checkboxes.</p>
+        </article>
+        <article class="feature">
+          <h3>Private by design</h3>
+          <p>No Aeye servers. Tokens on-device only. Usage fetched directly from Cursor / Anthropic.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="reading">
+    <div class="wrap">
+      <p class="section-kicker">Reading the numbers</p>
+      <h2 class="section-title">Same grammar as Alfred.</h2>
+      <p class="section-lead">
+        If you already learned the Mac workflow, the iPhone view should feel familiar on day one.
+      </p>
+
+      <div class="legend" aria-label="Example overview rows">
+        <div class="line">Composer / Auto   🟢⚪⚪⚪⚪⚪⚪⚪⚪⚪  13.0%  (🕐 68%, 11d, Tue Aug 21) 🐢</div>
+        <div class="sub">… · $39.85 / $20.00</div>
+        <div class="line">Other models      ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪  0.0%  (🕐 68%, 11d, Tue Aug 21) 🐢</div>
+        <div class="sub">…</div>
+        <div class="line">Grok Bot          ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪  1.0%  (🕐 14%, 6d, Fri 12pm) 🐢</div>
+        <div class="sub">Pro · Grok Bot Plan · weekly included</div>
+        <div class="line">Hourly            🟢⚪⚪⚪⚪⚪⚪⚪⚪⚪  6.0%  (🕐 40%, 5h, 11:30pm) 🐢</div>
+        <div class="sub">plan=… · experimental</div>
+        <div class="line">Weekly            ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪  1.0%  (🕐 14%, 6d, Tue 8pm) 🎯</div>
+        <div class="sub">plan=… · experimental</div>
+      </div>
+
+      <ul class="notes">
+        <li><strong>Composer / Auto</strong> / <strong>Other models</strong> — Cursor spending-page buckets</li>
+        <li><strong>Grok Bot</strong> — Cursor’s separate weekly included Bot allowance</li>
+        <li><strong>$39.85 / $20.00</strong> — included compute spend this cycle vs plan included spend limit (not necessarily billed dollars)</li>
+        <li><strong>(🕐 68%, 11d, …)</strong> — % of the period elapsed, then time until reset (<code>d</code> / <code>h</code> / <code>m</code>)</li>
+        <li><strong>Pace emoji</strong> — spent % vs elapsed % (±8 percentage points)</li>
+        <li><strong>Hourly</strong> — Claude 5-hour session limit; reset detail while a session is active</li>
+        <li><strong>Weekly</strong> — Claude weekly limit</li>
+        <li><strong>experimental</strong> — Claude % from Anthropic’s OAuth usage API (same caveat as Alfred)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="setup" class="alt">
+    <div class="wrap">
+      <p class="section-kicker">Setting up</p>
+      <h2 class="section-title">Build once. Glance forever.</h2>
+      <p class="section-lead">
+        Sideload with Xcode (free Apple ID works). Not on the App Store yet — intentional for a free companion for Alfred users.
+      </p>
+      <ol class="steps">
+        <li>Clone <a href="https://github.com/giovannicoppola/alfred-aeye">alfred-aeye</a> and open <code>ios/Aeye.xcodeproj</code> (or run <code>xcodegen generate</code> from <code>ios/</code>).</li>
+        <li>Set your Team on <strong>Aeye</strong>, <strong>AeyeWidgetExtension</strong>, <strong>AeyeWatch</strong>, and <strong>AeyeWatchWidgets</strong>.</li>
+        <li>Confirm App Groups: <code>group.com.giovanni.aeye</code> (iPhone) and <code>group.com.giovanni.aeye.watch</code> (Watch).</li>
+        <li>Run on your <strong>iPhone</strong> (Watch app installs with it). Sign in to Cursor and Claude in Settings, then Refresh.</li>
+        <li>Add the iPhone widget (Medium/Large) and optional Watch complications from the watch face editor.</li>
+      </ol>
+      <p style="margin-top: 1.5rem; color: var(--ink-soft);">
+        Details and troubleshooting live in the repo’s <a href="https://github.com/giovannicoppola/alfred-aeye/tree/main/ios">ios/README</a>.
+      </p>
+    </div>
+  </section>
+
+  <section id="companion">
+    <div class="wrap companion">
+      <div>
+        <p class="section-kicker">Alfred + iPhone + Watch</p>
+        <h2 class="section-title">One product, three surfaces.</h2>
+        <p class="section-lead">
+          On the Mac, type <code>aieye</code> in Alfred. On the phone, check the widget. On the wrist, glance a complication. Same meters, same pace, same story.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/giovannicoppola/alfred-aeye/releases/latest">Alfred workflow</a>
+          <a class="btn btn-ghost" href="https://github.com/giovannicoppola/alfred-aeye">GitHub</a>
+        </div>
+      </div>
+      <figure class="shot">
+        <img src="widget-preview.png" alt="Aeye Alfred workflow overview screenshot" width="1200" height="800" />
+      </figure>
+    </div>
+  </section>
+
+  <section id="privacy" class="alt">
+    <div class="wrap">
+      <p class="section-kicker">Privacy &amp; caveats</p>
+      <h2 class="section-title">Your tokens stay on the device.</h2>
+      <div class="feature-list">
+        <article class="feature">
+          <h3>No Aeye account</h3>
+          <p>Nothing is uploaded to a third-party usage dashboard. The app only talks to Cursor and Anthropic for numbers you already can see.</p>
+        </article>
+        <article class="feature">
+          <h3>Undocumented APIs</h3>
+          <p>Cursor and Claude usage endpoints can change without notice — same risk as the Alfred workflow.</p>
+        </article>
+        <article class="feature">
+          <h3>Sign in once on iPhone</h3>
+          <p>iOS can’t read Cursor’s local session DB the way the Mac workflow does, so you sign in to each service in Safari. Tokens land in the iPhone Keychain and refresh themselves.</p>
+        </article>
+        <article class="feature">
+          <h3>Free for Alfred users</h3>
+          <p>Not for sale. Built as a companion — share the source, build it yourself, keep the layout familiar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p class="brand-mini">Aeye 🦉</p>
+      <p>
+        Free iPhone companion to
+        <a href="https://github.com/giovannicoppola/alfred-aeye">Aeye for Alfred</a>.
+        Feedback welcome on
+        <a href="https://github.com/giovannicoppola/alfred-aeye/issues">GitHub Issues</a>.
+      </p>
+      <p style="margin-top: 0.75rem;"><a href="privacy.html">Privacy Policy</a></p>
+      <p style="margin-top: 1rem;">© Giovanni Coppola · Not affiliated with Cursor, Anthropic, or Alfred.</p>
+    </div>
+  </footer>
+</body>
+</html>

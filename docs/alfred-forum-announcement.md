@@ -7,7 +7,7 @@
 
 **Aeye**
 
-Check your Cursor and Claude usage toward plan limits from Alfred.
+Check your Cursor, Claude, and Grok Bot usage toward plan limits from Alfred.
 
 ![screenshot placeholder — attach a quick four-row overview capture when posting]
 
@@ -27,11 +27,12 @@ If you bounce between Cursor and Claude and keep opening dashboards just to see 
 ## Usage
 
 - Launch with keyword (default: `aieye`) or a hotkey
-- Four rows with a green → yellow → red circle meter:
+- Rows with a green → yellow → red circle meter:
   1. **Composer / Auto** (Cursor)
   2. **Other models** (Cursor) — same split as the spending page
-  3. **Hourly** (Claude 5-hour session; Claude Code icon)
-  4. **Weekly** (Claude)
+  3. **Grok Bot** (Cursor weekly included allowance)
+  4. **Hourly** (Claude 5-hour session; Claude Code icon)
+  5. **Weekly** (Claude)
 - Results are cached for ~60 seconds
 
 ### Actions
@@ -48,7 +49,7 @@ If you bounce between Cursor and Claude and keep opening dashboards just to see 
 - `(🕐 14%, 6d, Tue 8pm)` on Weekly
 - Claude `experimental` = percentages from Anthropic’s OAuth usage API (not the official statusline)
 
-Keyword and which rows to show can be changed in **Configure Workflow** (all four rows on by default).
+Keyword and which rows to show can be changed in **Configure Workflow** (all five rows on by default).
 
 ## Notes
 
@@ -66,8 +67,8 @@ https://github.com/giovannicoppola/alfred-aeye/issues
 
 ### Suggested forum topic title
 
-`introducing Aeye 🦉 — Cursor & Claude usage toward limits`
+`introducing Aeye 🦉 — Cursor, Claude & Grok Bot usage toward limits`
 
 ### Gallery one-liner (if needed)
 
-`See Cursor and Claude usage toward plan limits from Alfred.`
+`See Cursor, Claude, and Grok Bot usage toward plan limits from Alfred.`

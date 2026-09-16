@@ -7,6 +7,7 @@ Endpoints used (all on ``https://cursor.com``):
   POST /api/dashboard/get-filtered-usage-events       -> per-event log (paginated)
   POST /api/dashboard/get-current-period-usage        -> cycle limits (primary)
   GET  /api/usage-summary                             -> cycle limits (fallback)
+  POST /api/dashboard/get-sand-usage-status           -> Grok Bot weekly included usage
 
 State-changing POSTs require an ``Origin: https://cursor.com`` header (CSRF guard).
 Auth is the ``WorkosCursorSessionToken`` cookie, value ``<sub>::<jwt>`` (the ``::``
@@ -80,6 +81,10 @@ class CursorClient:
 
     def usage_summary(self):
         return self._request("/api/usage-summary")
+
+    def sand_usage_status(self):
+        """Grok Bot weekly included usage (dashboard Sand meter)."""
+        return self._request("/api/dashboard/get-sand-usage-status", "POST", {})
 
     def all_events(self, user_id, start_ms, end_ms, page_size=1000, progress=None):
         """Fetch every usage event in the window by paginating.

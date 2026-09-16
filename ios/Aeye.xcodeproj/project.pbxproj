@@ -1,0 +1,872 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09FAF45177ABE1DCD5A55F74 /* AeyeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4838267D94B9EF18B14ACF8 /* AeyeModels.swift */; };
+		0C22B387086A1FDD188DC41E /* WatchSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F2F970BFEA223471E58215 /* WatchSnapshotCache.swift */; };
+		14369E06E0B8CC37FF48CD12 /* WatchSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F2F970BFEA223471E58215 /* WatchSnapshotCache.swift */; };
+		164B0468C0B544323181D15C /* AeyeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E7DFAF9E6E3A5B31760A11 /* AeyeWidget.swift */; };
+		1A44D284B1403A7F6C0D2C10 /* AeyeWatchKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA53AE359BDC994DECD9AA2 /* AeyeWatchKind.swift */; };
+		1DD372932539A232073B059D /* AeyeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9826058A711FDFA73A48AF2 /* AeyeApp.swift */; };
+		1F334466CCE2ADC9B16CCA54 /* AeyeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4838267D94B9EF18B14ACF8 /* AeyeModels.swift */; };
+		24BA9C6C6E89F848EB358CB7 /* ClaudeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4D35EEB612A203586E45A /* ClaudeClient.swift */; };
+		258D0A6EC2E5D4A74698779B /* AeyeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA778B9D604F5D43B7999E1 /* AeyeJSON.swift */; };
+		28A0D120DE14A3DECCD72FC0 /* WatchSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F2F970BFEA223471E58215 /* WatchSnapshotCache.swift */; };
+		333E07FBE3B8D2B53388DDD0 /* WatchSnapshotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F2F970BFEA223471E58215 /* WatchSnapshotCache.swift */; };
+		4500C97465A4AD789006CB19 /* AeyeWatchWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD34B8FF91F8A69C84AA06 /* AeyeWatchWidgetsBundle.swift */; };
+		473FFF34CE8B1EB575F2C97B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D251B47CBE5371CAB7FA5 /* Assets.xcassets */; };
+		47F94C6D695206F89A9B8670 /* AeyeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA778B9D604F5D43B7999E1 /* AeyeJSON.swift */; };
+		4816CA92FA6069BAA200B143 /* MockSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC04DF7171B3F6EBBEBCBF /* MockSnapshot.swift */; };
+		4E7344F8950D7B244CFBBE46 /* ClaudeSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54242BA100236FC5DFE4C2E /* ClaudeSignInView.swift */; };
+		514BE6CC7875F10431711AD1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54575D678E66FF78B3E62684 /* SettingsView.swift */; };
+		566E7F77555BFC5C77F2357D /* WatchBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC178DBB8301AAF49006A9 /* WatchBridge.swift */; };
+		56918D0E5D71F7F6F5B3404A /* AeyeWidgetKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991308EE862B2427573E42B4 /* AeyeWidgetKind.swift */; };
+		57EA8D8BBA3C99AC62C7ADF1 /* CursorAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150474FA9DD8A2D422CB8C11 /* CursorAuth.swift */; };
+		59B763E6DA25BCEF98F7E65D /* AeyeWatchKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA53AE359BDC994DECD9AA2 /* AeyeWatchKind.swift */; };
+		5C30E593A00EEFC6BBB664D7 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D34C82D13E874427C4DEA23 /* KeychainStore.swift */; };
+		5CE0D0E7B819AF05CD4DC8D1 /* AeyeWidgetKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991308EE862B2427573E42B4 /* AeyeWidgetKind.swift */; };
+		5E31BECA37836B96F0ABA55E /* AeyeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B1D65110FC6880A052D64 /* AeyeFormatting.swift */; };
+		5F16C109A9F35EDA7BBB66B4 /* MockSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC04DF7171B3F6EBBEBCBF /* MockSnapshot.swift */; };
+		64634F9E0EFF7630F16819D8 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1AFD5290DE551620E9D34C /* AppModel.swift */; };
+		673BF24E26973093193B25DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E9242FD9EB25305568BDA4 /* ContentView.swift */; };
+		69AE5F11156BABF220439417 /* AeyeWidgetKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991308EE862B2427573E42B4 /* AeyeWidgetKind.swift */; };
+		6BDE92D732C883B189FB491D /* AeyeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA778B9D604F5D43B7999E1 /* AeyeJSON.swift */; };
+		6FC4F4005CA1D65AC531BAF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D251B47CBE5371CAB7FA5 /* Assets.xcassets */; };
+		72BC1F785D3B4510899B1E99 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DC835C89B82AFC433C659A29 /* PrivacyInfo.xcprivacy */; };
+		7609E8F5003F3453980654C3 /* AeyeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4838267D94B9EF18B14ACF8 /* AeyeModels.swift */; };
+		7652617B06001A7CF4CC145D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DC835C89B82AFC433C659A29 /* PrivacyInfo.xcprivacy */; };
+		7817F3BC6CE7DC482DB69D5E /* AeyeWatchKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA53AE359BDC994DECD9AA2 /* AeyeWatchKind.swift */; };
+		7FBF348F78F35DD2078191E1 /* AeyeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72735C8998D4F07EC980F6EC /* AeyeService.swift */; };
+		80FC39AD05678A2374DD3F47 /* AeyeRowID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5CF6755D5E1BA6C15B1BCC /* AeyeRowID.swift */; };
+		847387AA514B39AD41AF88AD /* MockSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC04DF7171B3F6EBBEBCBF /* MockSnapshot.swift */; };
+		8F3749421AA9FDDEF6134F46 /* AeyeRowID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5CF6755D5E1BA6C15B1BCC /* AeyeRowID.swift */; };
+		90DE95873B9E6D2FFEBD911F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DC835C89B82AFC433C659A29 /* PrivacyInfo.xcprivacy */; };
+		93F1EBD39BFF0B16297FD484 /* CursorSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453B0FBADE3FCFE99BC9996 /* CursorSignInView.swift */; };
+		9482709DE12C79AD65F1ED86 /* AeyeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 31E46F7D0E856776F59761E5 /* AeyeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		952DC4B5232150685E13FA72 /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21EC7ECACD8478C453B2E2 /* SnapshotStore.swift */; };
+		9AF2E77778EEAE5506EA8871 /* AeyeWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2951541EFEDCC59D58E7FC /* AeyeWatchApp.swift */; };
+		A3C929DB8FC995F46ACDE439 /* AeyeRowID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5CF6755D5E1BA6C15B1BCC /* AeyeRowID.swift */; };
+		A946E30E411FF2BE933363FE /* AeyeWidgetKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991308EE862B2427573E42B4 /* AeyeWidgetKind.swift */; };
+		AAFD3567BB497CB78C06C79C /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21EC7ECACD8478C453B2E2 /* SnapshotStore.swift */; };
+		AB7C96404F172DA01AD49513 /* AeyeWatchComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6FFC3A67885BE8D30E5E2A /* AeyeWatchComplication.swift */; };
+		AF43AC4764702B408A9B12F9 /* AeyeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA778B9D604F5D43B7999E1 /* AeyeJSON.swift */; };
+		B51B63249746FDF71F7F4CB4 /* AeyeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B1D65110FC6880A052D64 /* AeyeFormatting.swift */; };
+		B53F92B82AAE2E2551C3CB82 /* ClaudeOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158E080370C78F18F4330E1 /* ClaudeOAuth.swift */; };
+		B7837DC775868C9356459348 /* AeyeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B1D65110FC6880A052D64 /* AeyeFormatting.swift */; };
+		B7F2121425005C6C322CF18C /* WatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF939620AAF6317C714CCCA /* WatchModel.swift */; };
+		B916DAF499EBACCCB8EAF21F /* AeyeWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6D18A459075B2DE89A00F0D2 /* AeyeWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C04B000F08C1BDD2BDFB6F3F /* AeyeWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F90455A1B8F950E3D15CBC /* AeyeWidgetBundle.swift */; };
+		C88778A18B05059ADF086CB5 /* CursorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50D88AA8840D2E7D54C43C /* CursorClient.swift */; };
+		CABCA4E173C83DD0841044CE /* MockSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC04DF7171B3F6EBBEBCBF /* MockSnapshot.swift */; };
+		CABE44F4BFC288F2148BCD59 /* AeyeRowID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5CF6755D5E1BA6C15B1BCC /* AeyeRowID.swift */; };
+		CD977AD81D2DC3A8353EE13B /* WatchBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC178DBB8301AAF49006A9 /* WatchBridge.swift */; };
+		D06843D927B7DDD3DA566DF9 /* AeyeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B1D65110FC6880A052D64 /* AeyeFormatting.swift */; };
+		D0C7CCB850EC5D5A7BDC2086 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DC835C89B82AFC433C659A29 /* PrivacyInfo.xcprivacy */; };
+		D2754A7686A300E28170C9FD /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21EC7ECACD8478C453B2E2 /* SnapshotStore.swift */; };
+		E57FF2B9CF5866125750074A /* AeyeWatchKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA53AE359BDC994DECD9AA2 /* AeyeWatchKind.swift */; };
+		E9CBFEB57FD64AD5EF7ADEC8 /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21EC7ECACD8478C453B2E2 /* SnapshotStore.swift */; };
+		EB1E17AA40626E356D9AF2FA /* AeyeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4838267D94B9EF18B14ACF8 /* AeyeModels.swift */; };
+		F3DF65A1316A500CCFE3D8C5 /* AeyeWatchWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F99FDF2F867EAB7BE8FC1820 /* AeyeWatchWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F416C3CFCC823759522C22D6 /* WatchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5CB13B22DED97C3DD2D67D /* WatchContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		054205EE9E41083EAAAB677F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7385476D1F55D8B41ACDA06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2D28B22F9A53985E64F6A37;
+			remoteInfo = AeyeWatchWidgets;
+		};
+		17C429EBFB4D37E79C0FFD81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7385476D1F55D8B41ACDA06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93A3CDD81910632DED5845EB;
+			remoteInfo = AeyeWidgetExtension;
+		};
+		44A4F27DD06661EE9A55E906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7385476D1F55D8B41ACDA06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04E948C42537C69E9A54F580;
+			remoteInfo = AeyeWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		287B6FDC017621770611DD02 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F3DF65A1316A500CCFE3D8C5 /* AeyeWatchWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		810F076859BFF635A52DD2CD /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9482709DE12C79AD65F1ED86 /* AeyeWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC2A711C20245403083CCF57 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				B916DAF499EBACCCB8EAF21F /* AeyeWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0158E080370C78F18F4330E1 /* ClaudeOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeOAuth.swift; sourceTree = "<group>"; };
+		0E50D88AA8840D2E7D54C43C /* CursorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorClient.swift; sourceTree = "<group>"; };
+		150474FA9DD8A2D422CB8C11 /* CursorAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorAuth.swift; sourceTree = "<group>"; };
+		2ABC178DBB8301AAF49006A9 /* WatchBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchBridge.swift; sourceTree = "<group>"; };
+		31E46F7D0E856776F59761E5 /* AeyeWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = AeyeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C5CB13B22DED97C3DD2D67D /* WatchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchContentView.swift; sourceTree = "<group>"; };
+		4453B0FBADE3FCFE99BC9996 /* CursorSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorSignInView.swift; sourceTree = "<group>"; };
+		4AF939620AAF6317C714CCCA /* WatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchModel.swift; sourceTree = "<group>"; };
+		4D34C82D13E874427C4DEA23 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		54575D678E66FF78B3E62684 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5AC4D35EEB612A203586E45A /* ClaudeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeClient.swift; sourceTree = "<group>"; };
+		5CA53AE359BDC994DECD9AA2 /* AeyeWatchKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeWatchKind.swift; sourceTree = "<group>"; };
+		6D18A459075B2DE89A00F0D2 /* AeyeWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AeyeWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FAC04DF7171B3F6EBBEBCBF /* MockSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSnapshot.swift; sourceTree = "<group>"; };
+		72735C8998D4F07EC980F6EC /* AeyeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeService.swift; sourceTree = "<group>"; };
+		7F5CF6755D5E1BA6C15B1BCC /* AeyeRowID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeRowID.swift; sourceTree = "<group>"; };
+		85AD34B8FF91F8A69C84AA06 /* AeyeWatchWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeWatchWidgetsBundle.swift; sourceTree = "<group>"; };
+		8F4A31F51C03A96A05B1A663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		94F90455A1B8F950E3D15CBC /* AeyeWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeWidgetBundle.swift; sourceTree = "<group>"; };
+		96E7DFAF9E6E3A5B31760A11 /* AeyeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeWidget.swift; sourceTree = "<group>"; };
+		991308EE862B2427573E42B4 /* AeyeWidgetKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeWidgetKind.swift; sourceTree = "<group>"; };
+		9A8D251B47CBE5371CAB7FA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AE4FC8A6A94D1181E035D0F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B3F2F970BFEA223471E58215 /* WatchSnapshotCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSnapshotCache.swift; sourceTree = "<group>"; };
+		B4838267D94B9EF18B14ACF8 /* AeyeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeModels.swift; sourceTree = "<group>"; };
+		B9826058A711FDFA73A48AF2 /* AeyeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeApp.swift; sourceTree = "<group>"; };
+		C54242BA100236FC5DFE4C2E /* ClaudeSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeSignInView.swift; sourceTree = "<group>"; };
+		C92FECEE29ED1A5EEE11A7CF /* Aeye.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Aeye.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD6FFC3A67885BE8D30E5E2A /* AeyeWatchComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeWatchComplication.swift; sourceTree = "<group>"; };
+		CE1AFD5290DE551620E9D34C /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		CFA778B9D604F5D43B7999E1 /* AeyeJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeJSON.swift; sourceTree = "<group>"; };
+		D4E9242FD9EB25305568BDA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DC835C89B82AFC433C659A29 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		EE21EC7ECACD8478C453B2E2 /* SnapshotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotStore.swift; sourceTree = "<group>"; };
+		EF2951541EFEDCC59D58E7FC /* AeyeWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeWatchApp.swift; sourceTree = "<group>"; };
+		F72B1D65110FC6880A052D64 /* AeyeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeyeFormatting.swift; sourceTree = "<group>"; };
+		F99FDF2F867EAB7BE8FC1820 /* AeyeWatchWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AeyeWatchWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		328DE454B371D37CADC18D77 = {
+			isa = PBXGroup;
+			children = (
+				9A8D251B47CBE5371CAB7FA5 /* Assets.xcassets */,
+				B10DFEEA3645CADF49BF8378 /* Aeye */,
+				847F54D28F47107845C133A7 /* AeyeWatch */,
+				C8A5493D8B67819E974AD7FC /* AeyeWatchWidgets */,
+				4152A51694209CB2BEBBA6D2 /* AeyeWidget */,
+				F12B01C9B9A159B90839787C /* Config */,
+				91C4EBAF164EB1D559094E8B /* Shared */,
+				D0EC687D0939240536A01EF4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4152A51694209CB2BEBBA6D2 /* AeyeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				96E7DFAF9E6E3A5B31760A11 /* AeyeWidget.swift */,
+				94F90455A1B8F950E3D15CBC /* AeyeWidgetBundle.swift */,
+			);
+			path = AeyeWidget;
+			sourceTree = "<group>";
+		};
+		847F54D28F47107845C133A7 /* AeyeWatch */ = {
+			isa = PBXGroup;
+			children = (
+				EF2951541EFEDCC59D58E7FC /* AeyeWatchApp.swift */,
+				8F4A31F51C03A96A05B1A663 /* Info.plist */,
+				3C5CB13B22DED97C3DD2D67D /* WatchContentView.swift */,
+				4AF939620AAF6317C714CCCA /* WatchModel.swift */,
+			);
+			path = AeyeWatch;
+			sourceTree = "<group>";
+		};
+		91C4EBAF164EB1D559094E8B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F72B1D65110FC6880A052D64 /* AeyeFormatting.swift */,
+				CFA778B9D604F5D43B7999E1 /* AeyeJSON.swift */,
+				B4838267D94B9EF18B14ACF8 /* AeyeModels.swift */,
+				7F5CF6755D5E1BA6C15B1BCC /* AeyeRowID.swift */,
+				72735C8998D4F07EC980F6EC /* AeyeService.swift */,
+				5CA53AE359BDC994DECD9AA2 /* AeyeWatchKind.swift */,
+				991308EE862B2427573E42B4 /* AeyeWidgetKind.swift */,
+				5AC4D35EEB612A203586E45A /* ClaudeClient.swift */,
+				0158E080370C78F18F4330E1 /* ClaudeOAuth.swift */,
+				150474FA9DD8A2D422CB8C11 /* CursorAuth.swift */,
+				0E50D88AA8840D2E7D54C43C /* CursorClient.swift */,
+				4D34C82D13E874427C4DEA23 /* KeychainStore.swift */,
+				6FAC04DF7171B3F6EBBEBCBF /* MockSnapshot.swift */,
+				EE21EC7ECACD8478C453B2E2 /* SnapshotStore.swift */,
+				2ABC178DBB8301AAF49006A9 /* WatchBridge.swift */,
+				B3F2F970BFEA223471E58215 /* WatchSnapshotCache.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B10DFEEA3645CADF49BF8378 /* Aeye */ = {
+			isa = PBXGroup;
+			children = (
+				B9826058A711FDFA73A48AF2 /* AeyeApp.swift */,
+				CE1AFD5290DE551620E9D34C /* AppModel.swift */,
+				C54242BA100236FC5DFE4C2E /* ClaudeSignInView.swift */,
+				D4E9242FD9EB25305568BDA4 /* ContentView.swift */,
+				4453B0FBADE3FCFE99BC9996 /* CursorSignInView.swift */,
+				AE4FC8A6A94D1181E035D0F3 /* Info.plist */,
+				54575D678E66FF78B3E62684 /* SettingsView.swift */,
+			);
+			path = Aeye;
+			sourceTree = "<group>";
+		};
+		C8A5493D8B67819E974AD7FC /* AeyeWatchWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				CD6FFC3A67885BE8D30E5E2A /* AeyeWatchComplication.swift */,
+				85AD34B8FF91F8A69C84AA06 /* AeyeWatchWidgetsBundle.swift */,
+			);
+			path = AeyeWatchWidgets;
+			sourceTree = "<group>";
+		};
+		D0EC687D0939240536A01EF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C92FECEE29ED1A5EEE11A7CF /* Aeye.app */,
+				6D18A459075B2DE89A00F0D2 /* AeyeWatch.app */,
+				F99FDF2F867EAB7BE8FC1820 /* AeyeWatchWidgets.appex */,
+				31E46F7D0E856776F59761E5 /* AeyeWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F12B01C9B9A159B90839787C /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				DC835C89B82AFC433C659A29 /* PrivacyInfo.xcprivacy */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04E948C42537C69E9A54F580 /* AeyeWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63032BDAB780E9CBCA70D6B3 /* Build configuration list for PBXNativeTarget "AeyeWatch" */;
+			buildPhases = (
+				2E148AA1AD8F69D4AC1DE913 /* Sources */,
+				E7A5A5854FD0FAE4453091A9 /* Resources */,
+				287B6FDC017621770611DD02 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DE515B1E448AB4F0BED10FC /* PBXTargetDependency */,
+			);
+			name = AeyeWatch;
+			packageProductDependencies = (
+			);
+			productName = AeyeWatch;
+			productReference = 6D18A459075B2DE89A00F0D2 /* AeyeWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7BC6E76741D85D52C9080892 /* Aeye */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9FD8EB0B18D860CDAC462DD /* Build configuration list for PBXNativeTarget "Aeye" */;
+			buildPhases = (
+				A09D1CEBCD52353C316FB2E8 /* Sources */,
+				AC458AC9377B3D55E2809E80 /* Resources */,
+				810F076859BFF635A52DD2CD /* Embed Foundation Extensions */,
+				EC2A711C20245403083CCF57 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E13A92E836D6597BF75F85D /* PBXTargetDependency */,
+				E7BA5D9DCAF8FBA5B878AF92 /* PBXTargetDependency */,
+			);
+			name = Aeye;
+			packageProductDependencies = (
+			);
+			productName = Aeye;
+			productReference = C92FECEE29ED1A5EEE11A7CF /* Aeye.app */;
+			productType = "com.apple.product-type.application";
+		};
+		93A3CDD81910632DED5845EB /* AeyeWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 897E187849E4F29C521B8546 /* Build configuration list for PBXNativeTarget "AeyeWidgetExtension" */;
+			buildPhases = (
+				DB7C5B3723F973F191344050 /* Sources */,
+				CFCB8A5D4F8234CEE1536841 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AeyeWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = AeyeWidgetExtension;
+			productReference = 31E46F7D0E856776F59761E5 /* AeyeWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C2D28B22F9A53985E64F6A37 /* AeyeWatchWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B1390C21A2074FF5BDD6A17 /* Build configuration list for PBXNativeTarget "AeyeWatchWidgets" */;
+			buildPhases = (
+				1061D2123033BD511A641241 /* Sources */,
+				D3DF44A126C767F251427AC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AeyeWatchWidgets;
+			packageProductDependencies = (
+			);
+			productName = AeyeWatchWidgets;
+			productReference = F99FDF2F867EAB7BE8FC1820 /* AeyeWatchWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A7385476D1F55D8B41ACDA06 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					04E948C42537C69E9A54F580 = {
+						DevelopmentTeam = VDG762YNX9;
+						ProvisioningStyle = Automatic;
+					};
+					7BC6E76741D85D52C9080892 = {
+						DevelopmentTeam = VDG762YNX9;
+						ProvisioningStyle = Automatic;
+					};
+					93A3CDD81910632DED5845EB = {
+						DevelopmentTeam = VDG762YNX9;
+						ProvisioningStyle = Automatic;
+					};
+					C2D28B22F9A53985E64F6A37 = {
+						DevelopmentTeam = VDG762YNX9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5923B10B3C69AF629C12BA74 /* Build configuration list for PBXProject "Aeye" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 328DE454B371D37CADC18D77;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D0EC687D0939240536A01EF4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7BC6E76741D85D52C9080892 /* Aeye */,
+				93A3CDD81910632DED5845EB /* AeyeWidgetExtension */,
+				04E948C42537C69E9A54F580 /* AeyeWatch */,
+				C2D28B22F9A53985E64F6A37 /* AeyeWatchWidgets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC458AC9377B3D55E2809E80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FC4F4005CA1D65AC531BAF7 /* Assets.xcassets in Resources */,
+				7652617B06001A7CF4CC145D /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFCB8A5D4F8234CEE1536841 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90DE95873B9E6D2FFEBD911F /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3DF44A126C767F251427AC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0C7CCB850EC5D5A7BDC2086 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7A5A5854FD0FAE4453091A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				473FFF34CE8B1EB575F2C97B /* Assets.xcassets in Resources */,
+				72BC1F785D3B4510899B1E99 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1061D2123033BD511A641241 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D06843D927B7DDD3DA566DF9 /* AeyeFormatting.swift in Sources */,
+				258D0A6EC2E5D4A74698779B /* AeyeJSON.swift in Sources */,
+				1F334466CCE2ADC9B16CCA54 /* AeyeModels.swift in Sources */,
+				8F3749421AA9FDDEF6134F46 /* AeyeRowID.swift in Sources */,
+				AB7C96404F172DA01AD49513 /* AeyeWatchComplication.swift in Sources */,
+				E57FF2B9CF5866125750074A /* AeyeWatchKind.swift in Sources */,
+				4500C97465A4AD789006CB19 /* AeyeWatchWidgetsBundle.swift in Sources */,
+				56918D0E5D71F7F6F5B3404A /* AeyeWidgetKind.swift in Sources */,
+				5F16C109A9F35EDA7BBB66B4 /* MockSnapshot.swift in Sources */,
+				AAFD3567BB497CB78C06C79C /* SnapshotStore.swift in Sources */,
+				333E07FBE3B8D2B53388DDD0 /* WatchSnapshotCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E148AA1AD8F69D4AC1DE913 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B51B63249746FDF71F7F4CB4 /* AeyeFormatting.swift in Sources */,
+				6BDE92D732C883B189FB491D /* AeyeJSON.swift in Sources */,
+				09FAF45177ABE1DCD5A55F74 /* AeyeModels.swift in Sources */,
+				CABE44F4BFC288F2148BCD59 /* AeyeRowID.swift in Sources */,
+				9AF2E77778EEAE5506EA8871 /* AeyeWatchApp.swift in Sources */,
+				59B763E6DA25BCEF98F7E65D /* AeyeWatchKind.swift in Sources */,
+				5CE0D0E7B819AF05CD4DC8D1 /* AeyeWidgetKind.swift in Sources */,
+				4816CA92FA6069BAA200B143 /* MockSnapshot.swift in Sources */,
+				E9CBFEB57FD64AD5EF7ADEC8 /* SnapshotStore.swift in Sources */,
+				566E7F77555BFC5C77F2357D /* WatchBridge.swift in Sources */,
+				F416C3CFCC823759522C22D6 /* WatchContentView.swift in Sources */,
+				B7F2121425005C6C322CF18C /* WatchModel.swift in Sources */,
+				14369E06E0B8CC37FF48CD12 /* WatchSnapshotCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A09D1CEBCD52353C316FB2E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DD372932539A232073B059D /* AeyeApp.swift in Sources */,
+				B7837DC775868C9356459348 /* AeyeFormatting.swift in Sources */,
+				47F94C6D695206F89A9B8670 /* AeyeJSON.swift in Sources */,
+				EB1E17AA40626E356D9AF2FA /* AeyeModels.swift in Sources */,
+				80FC39AD05678A2374DD3F47 /* AeyeRowID.swift in Sources */,
+				7FBF348F78F35DD2078191E1 /* AeyeService.swift in Sources */,
+				7817F3BC6CE7DC482DB69D5E /* AeyeWatchKind.swift in Sources */,
+				69AE5F11156BABF220439417 /* AeyeWidgetKind.swift in Sources */,
+				64634F9E0EFF7630F16819D8 /* AppModel.swift in Sources */,
+				24BA9C6C6E89F848EB358CB7 /* ClaudeClient.swift in Sources */,
+				B53F92B82AAE2E2551C3CB82 /* ClaudeOAuth.swift in Sources */,
+				4E7344F8950D7B244CFBBE46 /* ClaudeSignInView.swift in Sources */,
+				673BF24E26973093193B25DE /* ContentView.swift in Sources */,
+				57EA8D8BBA3C99AC62C7ADF1 /* CursorAuth.swift in Sources */,
+				C88778A18B05059ADF086CB5 /* CursorClient.swift in Sources */,
+				93F1EBD39BFF0B16297FD484 /* CursorSignInView.swift in Sources */,
+				5C30E593A00EEFC6BBB664D7 /* KeychainStore.swift in Sources */,
+				847387AA514B39AD41AF88AD /* MockSnapshot.swift in Sources */,
+				514BE6CC7875F10431711AD1 /* SettingsView.swift in Sources */,
+				D2754A7686A300E28170C9FD /* SnapshotStore.swift in Sources */,
+				CD977AD81D2DC3A8353EE13B /* WatchBridge.swift in Sources */,
+				28A0D120DE14A3DECCD72FC0 /* WatchSnapshotCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB7C5B3723F973F191344050 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E31BECA37836B96F0ABA55E /* AeyeFormatting.swift in Sources */,
+				AF43AC4764702B408A9B12F9 /* AeyeJSON.swift in Sources */,
+				7609E8F5003F3453980654C3 /* AeyeModels.swift in Sources */,
+				A3C929DB8FC995F46ACDE439 /* AeyeRowID.swift in Sources */,
+				1A44D284B1403A7F6C0D2C10 /* AeyeWatchKind.swift in Sources */,
+				164B0468C0B544323181D15C /* AeyeWidget.swift in Sources */,
+				C04B000F08C1BDD2BDFB6F3F /* AeyeWidgetBundle.swift in Sources */,
+				A946E30E411FF2BE933363FE /* AeyeWidgetKind.swift in Sources */,
+				CABCA4E173C83DD0841044CE /* MockSnapshot.swift in Sources */,
+				952DC4B5232150685E13FA72 /* SnapshotStore.swift in Sources */,
+				0C22B387086A1FDD188DC41E /* WatchSnapshotCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DE515B1E448AB4F0BED10FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2D28B22F9A53985E64F6A37 /* AeyeWatchWidgets */;
+			targetProxy = 054205EE9E41083EAAAB677F /* PBXContainerItemProxy */;
+		};
+		6E13A92E836D6597BF75F85D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93A3CDD81910632DED5845EB /* AeyeWidgetExtension */;
+			targetProxy = 17C429EBFB4D37E79C0FFD81 /* PBXContainerItemProxy */;
+		};
+		E7BA5D9DCAF8FBA5B878AF92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04E948C42537C69E9A54F580 /* AeyeWatch */;
+			targetProxy = 44A4F27DD06661EE9A55E906 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		16FA31C2658C3E0071812478 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = VDG762YNX9;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		4DF870705861C2EB452484F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/Aeye.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Aeye/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Aeye;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		62CB9E6FF517F2898346737F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = VDG762YNX9;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		67FE047423830AE64BD7E2A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/Aeye.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Aeye/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Aeye;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9765959E0DD4CF2EEF85051A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/AeyeWatch.entitlements;
+				INFOPLIST_FILE = AeyeWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Aeye;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		A0D8B245162D14EF1A26036A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/AeyeWidget.entitlements;
+				INFOPLIST_FILE = "Config/AeyeWidget-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Aeye Widget";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		CD6BDD5D178F5606A22EEDA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/AeyeWidget.entitlements;
+				INFOPLIST_FILE = "Config/AeyeWidget-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Aeye Widget";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D7186B22727CEC205A478D56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/AeyeWatch.entitlements;
+				INFOPLIST_FILE = AeyeWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Aeye;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye.watchkitapp;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		E84ECD9F961D4ECB16B6766E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/AeyeWatchWidgets.entitlements;
+				INFOPLIST_FILE = "Config/AeyeWatchWidgets-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Aeye;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye.watchkitapp.widgets;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		E8E8C6595025414E3DDEF225 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/AeyeWatchWidgets.entitlements;
+				INFOPLIST_FILE = "Config/AeyeWatchWidgets-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Aeye;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.giovanni.aeye.watchkitapp.widgets;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4B1390C21A2074FF5BDD6A17 /* Build configuration list for PBXNativeTarget "AeyeWatchWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E84ECD9F961D4ECB16B6766E /* Debug */,
+				E8E8C6595025414E3DDEF225 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5923B10B3C69AF629C12BA74 /* Build configuration list for PBXProject "Aeye" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62CB9E6FF517F2898346737F /* Debug */,
+				16FA31C2658C3E0071812478 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		63032BDAB780E9CBCA70D6B3 /* Build configuration list for PBXNativeTarget "AeyeWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9765959E0DD4CF2EEF85051A /* Debug */,
+				D7186B22727CEC205A478D56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		897E187849E4F29C521B8546 /* Build configuration list for PBXNativeTarget "AeyeWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD6BDD5D178F5606A22EEDA0 /* Debug */,
+				A0D8B245162D14EF1A26036A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D9FD8EB0B18D860CDAC462DD /* Build configuration list for PBXNativeTarget "Aeye" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67FE047423830AE64BD7E2A0 /* Debug */,
+				4DF870705861C2EB452484F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A7385476D1F55D8B41ACDA06 /* Project object */;
+}

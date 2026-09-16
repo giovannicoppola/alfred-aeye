@@ -48,7 +48,7 @@
 	<key>createdby</key>
 	<string>giovanni</string>
 	<key>description</key>
-	<string>Show current Cursor and Claude usage toward plan limits</string>
+	<string>Show current Cursor, Claude, and Grok Bot usage toward plan limits</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -100,7 +100,7 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Fetching Cursor &amp; Claude usage…</string>
+				<string>Fetching Cursor, Claude &amp; Grok Bot usage…</string>
 				<key>script</key>
 				<string>./run.sh
 </string>
@@ -109,7 +109,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Cursor + Claude usage toward limits</string>
+				<string>Cursor + Claude + Grok Bot usage toward limits</string>
 				<key>title</key>
 				<string>Aeye</string>
 				<key>type</key>
@@ -180,7 +180,7 @@
 	<key>readme</key>
 	<string># Aeye 🦉
 
-Show **Cursor** and **Claude** usage toward plan limits from Alfred.
+Show **Cursor**, **Claude**, and **Grok Bot** usage toward plan limits from Alfred.
 
 More info: https://github.com/giovannicoppola/alfred-aeye
 
@@ -188,15 +188,16 @@ More info: https://github.com/giovannicoppola/alfred-aeye
 - For Cursor rows: signed in to the Cursor app on this Mac
 - For Claude rows: Claude Code signed in (OAuth in Keychain)
 - Optional: change the keyword below (default: `!e`), or assign a hotkey
-- Optional: uncheck rows you don’t use (Composer/Auto, Other models, Hourly, Weekly)
+- Optional: uncheck rows you don’t use (Composer/Auto, Other models, Grok Bot, Hourly, Weekly)
 
 ## Usage
-1. Type the keyword → enabled rows (Composer/Auto, Other models, Hourly, Weekly)
+1. Type the keyword → enabled rows (Composer/Auto, Other models, Grok Bot, Hourly, Weekly)
 2. Results are cached for ~60s
 
 ### Reading the rows
 - Circle meter: 🟢 → 🟡 → 🔴 as you approach the limit (⚪ unused)
 - **Composer / Auto** / **Other models** — same split as the Cursor spending page
+- **Grok Bot** — Cursor’s separate weekly included allowance (hidden if the account has none)
 - Cursor `$x / $y` = included compute spend vs plan included limit (not necessarily billed $)
 - `(🕐 68%, 11d, Tue Aug 21)` = % of period elapsed, then time until reset (`d` / `h` / `m`)
 - Pace emoji after the parenthesis: 🐢 underspending · 🎯 on track · 🔥 overspending (spent % vs elapsed %)
@@ -308,6 +309,25 @@ More info: https://github.com/giovannicoppola/alfred-aeye
 				<key>required</key>
 				<false/>
 				<key>text</key>
+				<string>Grok Bot (Cursor, weekly)</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>show_cursor_grok</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
 				<string>Hourly (Claude)</string>
 			</dict>
 			<key>description</key>
@@ -342,7 +362,7 @@ More info: https://github.com/giovannicoppola/alfred-aeye
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>0.1.0</string>
+	<string>0.2.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/giovannicoppola/alfred-aeye</string>
 </dict>

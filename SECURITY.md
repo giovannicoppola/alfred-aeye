@@ -14,7 +14,7 @@ Sources:
 
 | Area | Finding |
 |------|---------|
-| Network | Only `https://cursor.com` dashboard endpoints |
+| Network | Only `https://cursor.com` dashboard endpoints (including `POST /api/dashboard/get-sand-usage-status` for Grok Bot) |
 | Credentials | Reads local Cursor session (`CURSOR_SESSION_TOKEN`, macOS Keychain `cursor-access-token`, optional keyring, or `state.vscdb`). Does not write/refresh tokens |
 | Subprocess | macOS: `security find-generic-password` (read-only) |
 | Filesystem | Read-only auth sources; optional CSV write only when `--csv` is passed (workflow does not use this) |
