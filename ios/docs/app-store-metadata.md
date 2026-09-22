@@ -6,18 +6,21 @@ Process and checklist live in [`app-store-submission.md`](app-store-submission.m
 ## Name (30)
 
 ```
-Aeye
+Aeye — Usage Meter
 ```
 
-Fallback if taken: `Aeye — Usage Meter` (18).
+Plain `Aeye` was taken, so the registered name is the fallback (18 characters). The app's own
+display name on the Home Screen is still just **Aeye** (`INFOPLIST_KEY_CFBundleDisplayName`), which
+is allowed — the listing name and the icon label do not have to match.
 
 ## Subtitle (30)
 
 ```
-Cursor & Claude usage limits
+Cursor & Claude plan meters
 ```
 
-(28 characters.)
+(26 characters.) Reworded from "usage limits" so it does not echo "Usage Meter" in the name —
+the subtitle is better spent on the two service names, which is what people search for.
 
 ## Promotional text (170)
 
