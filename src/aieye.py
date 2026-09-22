@@ -524,8 +524,17 @@ def _resolve_claude_oauth_token() -> Optional[str]:
     return None
 
 
-def _fmt_reset(window: Dict[str, Any], *, with_date: bool = False) -> Optional[str]:
+def _claude_reset_dt(window: Dict[str, Any]) -> Optional[datetime]:
+    """Reset time rounded to the minute: the API jitters by ~1s either side
+    (e.g. 23:59:59.6 instead of 00:00:00), which would show 7pm for an 8pm reset."""
     dt = _parse_reset_dt(window.get("resets_at"), epoch=window.get("resets_at_epoch"))
+    if dt is None:
+        return None
+    return (dt + timedelta(seconds=30)).replace(second=0, microsecond=0)
+
+
+def _fmt_reset(window: Dict[str, Any], *, with_date: bool = False) -> Optional[str]:
+    dt = _claude_reset_dt(window)
     if dt is None:
         return None
     local = dt.astimezone()
@@ -585,10 +594,8 @@ def _claude_fields(snap: Dict[str, Any]) -> Dict[str, Any]:
     seven_conf = seven.get("confidence") or five_conf
     five_reset = _fmt_reset(five)
     seven_reset = _fmt_reset(seven, with_date=True)
-    five_reset_dt = _parse_reset_dt(five.get("resets_at"), epoch=five.get("resets_at_epoch"))
-    seven_reset_dt = _parse_reset_dt(
-        seven.get("resets_at"), epoch=seven.get("resets_at_epoch")
-    )
+    five_reset_dt = _claude_reset_dt(five)
+    seven_reset_dt = _claude_reset_dt(seven)
     session_active = bool(local.get("is_active"))
 
     # Window start must match Anthropic's rate-limit bucket (resets_at − duration),

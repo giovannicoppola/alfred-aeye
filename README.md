@@ -118,6 +118,7 @@ Both upstream packages are **vendored** in this repo (no surprise `pip install` 
 
 # Changelog 🧰
 
+- 2026-09-22: version 0.2.1 — Claude reset times no longer show a minute or an hour early (API timestamps jitter by ~1s)
 - 2026-09-12: version 0.2.0 — Grok Bot weekly included-usage row (Cursor session)
 - 2026-08-18: version 0.1.0 — initial release (Cursor + Claude, four-row overview, 60s cache)
 
