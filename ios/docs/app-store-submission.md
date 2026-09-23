@@ -226,16 +226,21 @@ present in each.
 - [ ] Review notes point at Settings → Sample data (§0); verified the toggle works in a Release build
 - [x] Privacy policy URL live and reachable (§2) — verified 22 September 2026
 - [ ] App Privacy answered "No data collected" (§3)
-- [ ] iPhone + Watch screenshots uploaded (§4)
+- [x] iPhone + Watch screenshots uploaded (§4) — `scripts/asc_screenshots.py`, 23 September 2026
 - [x] Build uploaded and processed — 1.0.0 (1), 22 September 2026, delivery
       `31b929dc-6d17-457c-a673-deab167c61e6`, `processingState=VALID` after ~90 s.
       **Build 1 is spent**: a resubmission needs `CURRENT_PROJECT_VERSION: "2"` in `project.yml`.
-- [ ] Build selected on the 1.0.0 version in the web UI
+- [x] Build uploaded and processed — 1.0.1 (2), 23 September 2026, delivery
+      `230156b0-bdc6-45b8-b795-28f38116b41e`. The never-submitted "1.0" version record was renamed
+      to 1.0.1 to match.
+- [x] Build 2 selected on the 1.0.1 version (API)
+- [x] Age rating (all "None"/"No"), content rights (no third-party content), price (Free),
+      review contact and notes — set via the API, 23 September 2026
 - [ ] Tested from TestFlight on a clean device: sign in to Claude, sign in to Cursor, add the
       Home Screen widget, open the Watch app, add a complication
 - [x] "Not affiliated with Cursor, Anthropic, or Alfred" visible in-app — Settings → About
 - [x] Apple ID signed into Xcode so the archive can sign (§5)
-- [ ] Version/build bumped if this is a resubmission (build numbers cannot repeat)
+- [x] Version/build bumped if this is a resubmission (build numbers cannot repeat)
 
 ## Review notes template
 
