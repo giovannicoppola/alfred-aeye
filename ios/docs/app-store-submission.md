@@ -3,7 +3,7 @@
 Everything needed to take `ios/` from source to a review submission, plus the two things that
 can get this particular app rejected.
 
-Current release target: **1.0.1 (build 2)** — submitted for review 23 September 2026 — `ios/project.yml`, `MARKETING_VERSION` /
+Current release target: **1.0.1 (build 2)** — submitted for review 23 September 2026, rejected 1 October (subtitle, §7), resubmitted 2 October 2026 — `ios/project.yml`, `MARKETING_VERSION` /
 `CURRENT_PROJECT_VERSION`.
 
 ---
@@ -34,7 +34,8 @@ permission from those companies to use their service and marks. Mitigations that
   → About**, added 22 September 2026) as well as on the landing page. That section also links to the
   privacy policy and to support, so a reviewer can reach both without leaving the app.
 - Use the names only as plain-text row labels — no third-party logos or wordmark art in the icon,
-  screenshots, app name, or subtitle.
+  screenshots, app name, or subtitle. **The app name and subtitle must not contain the names at
+  all, even as plain text** — 1.0.1 (2) was rejected for exactly that (Guideline 4.1(c), see §7).
 - In review notes, state that the app only reads the signed-in user's own usage numbers with their
   own credentials, and stores nothing off-device.
 - Have a reply ready: if asked for authorization and you have none, the fallback is TestFlight
@@ -191,12 +192,14 @@ Upload needs an App Store Connect API key:
 
 ```bash
 export ASC_KEY_ID=PCLQ5K922S
-export ASC_ISSUER_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+export ASC_ISSUER_ID=8c2fcae8-9d7c-4cf6-91f8-9e23760ac9f1
 # private key at ~/.appstoreconnect/private_keys/AuthKey_$ASC_KEY_ID.p8
 ```
 
-The `.p8` is already on this Mac (`AuthKey_PCLQ5K922S.p8`). The issuer ID is not stored anywhere
-locally — copy it from the top of the **Integrations → App Store Connect API** page.
+The `.p8` is already on this Mac (`AuthKey_PCLQ5K922S.p8`). The issuer ID is the one above (shown
+at the top of the **Integrations → App Store Connect API** page) and is not secret on its own —
+the `.p8` is what grants access. The same two variables drive `scripts/asc_metadata.py` and
+`scripts/asc_screenshots.py`.
 
 Create it under App Store Connect → **Users and Access** → **Integrations** → **App Store Connect
 API**, role *App Manager*. The `.p8` downloads exactly once.
@@ -241,6 +244,13 @@ present in each.
 - [x] "Not affiliated with Cursor, Anthropic, or Alfred" visible in-app — Settings → About
 - [x] Apple ID signed into Xcode so the archive can sign (§5)
 - [x] Version/build bumped if this is a resubmission (build numbers cannot repeat)
+- [ ] App name and subtitle free of third-party names (Cursor, Claude, Anthropic, Grok, Alfred)
+
+## 7. Review history
+
+| Date | Version | Outcome |
+|---|---|---|
+| 1 October 2026 | 1.0.1 (2) | **Rejected — Guideline 4.1(c) Copycats.** Subtitle "Cursor & Claude plan meters" used other developers' brand names. Metadata-only fix: subtitle changed to "AI coding limits at a glance" (pushed with `asc_metadata.py --apply`, 2 October 2026); same build resubmitted 2 October 2026, 09:04 UTC — `WAITING_FOR_REVIEW`. Submission ID `9b9a05dc-67c1-4769-8cde-5122067679c5`. |
 
 ## Review notes template
 

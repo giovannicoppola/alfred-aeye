@@ -16,11 +16,14 @@ is allowed — the listing name and the icon label do not have to match.
 ## Subtitle (30)
 
 ```
-Cursor & Claude plan meters
+AI coding limits at a glance
 ```
 
-(26 characters.) Reworded from "usage limits" so it does not echo "Usage Meter" in the name —
-the subtitle is better spent on the two service names, which is what people search for.
+(28 characters.) **No third-party names here.** 1.0.1 (2) was rejected on 1 October 2026 under
+Guideline 4.1(c) (Copycats) because the subtitle was "Cursor & Claude plan meters": the name, the
+subtitle, and the icon cannot contain another developer's brand or product name without their
+approval. The service names stay in the description (as a factual compatibility statement) and in
+the keywords.
 
 ## Promotional text (170)
 
