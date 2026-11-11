@@ -3,7 +3,7 @@
 Everything needed to take `ios/` from source to a review submission, plus the two things that
 can get this particular app rejected.
 
-Current release target: **1.0.1 (build 2)** — submitted for review 23 September 2026, rejected 1 October (subtitle, §7), resubmitted 2 October 2026, **approved and live** (`READY_FOR_SALE`, confirmed via the API 16 October 2026) — `ios/project.yml`, `MARKETING_VERSION` /
+Current release target: **1.0.1 (build 2)** — submitted for review 23 September 2026, rejected 1 October (subtitle, §7), resubmitted 2 October 2026, **approved and live** (`READY_FOR_SALE`, confirmed via the API 16 October 2026) as *Aeye — Usage Meter*, app ID `6815004417`: https://apps.apple.com/app/aeye-usage-meter/id6815004417 — `ios/project.yml`, `MARKETING_VERSION` /
 `CURRENT_PROJECT_VERSION`.
 
 ---

@@ -1,5 +1,7 @@
 # Aeye iOS — iPhone, widget & Apple Watch
 
+**[Get it on the App Store](https://apps.apple.com/app/aeye-usage-meter/id6815004417)** (free).
+
 Free companion apps with the **same rows** as the [Alfred workflow](../README.md):
 
 | Row | Source |

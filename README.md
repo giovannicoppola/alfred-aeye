@@ -12,8 +12,9 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-aeye/total?c
 
 ![Screenshot](docs/screenshot.png)
 
-**On iPhone too** — [Aeye for iOS](ios/README.md) is a free companion app with the same rows, plus
-Home Screen widgets and an Apple Watch app.
+**On iPhone too** — [Aeye on the App Store](https://apps.apple.com/app/aeye-usage-meter/id6815004417)
+is a free companion app with the same rows, plus Home Screen widgets and an Apple Watch app
+([source and details](ios/README.md)).
 
 # Motivation ✅
 
